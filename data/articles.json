@@ -1,0 +1,124 @@
+{
+  "articles": [
+    {
+      "id": 4,
+      "source_id": 2,
+      "title": "2026-02-12日刊",
+      "content": "前往官网查看完整版 (ai.hubtoday.app)产品与功能更新阿里推出机器人模型RynnBrain，性能超越谷歌Gemini。网易有道发布龙虾AI，支持跨应用自动处理工作。DeepSeek更新App，上下文扩展至一百万Token。字节发布Seedance 2.0，支持将小说直接生成视频。谷歌Gemini 3 Flash能利用代码自动处理视觉任务。前沿研究上交大研究发现AI社交欺诈风险，模型越聪明越会骗人。研究者提出Code2World模型，用代码生成模拟界面。AIDev数据集发布，收录GitHub上的AI编程行为。论文分析混合并行策略，为大模型训练提供优化指南。行业展望与社会影响创业者警告AI将替代白领，建议尽快学习使用工具。......[剩余内容已省略]📢 关于 AI日报 的一次小调整坦白说，想要长久地把AI日报做下去，单靠&quot;为爱发电”确实面临现实压力。为了更有热情的投入精力， 日报网站版需要来自你们的访问。由于 RSS 无法展示广告带来收入，即日起 RSS 将试运行&quot;摘要模式”一段时间。感谢您的理解与陪伴，让我们一起走得更远！👇 点击下方链接，阅读今日完整",
+      "url": "https://ai.hubtoday.app//2026-02/2026-02-12/",
+      "published_at": "2026-02-12T07:55:12",
+      "translated_title": null,
+      "is_translated": 0,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "何夕2077 ai日报",
+      "source_type": "rss",
+      "category": "",
+      "description": "",
+      "deep_read": 0,
+      "source_translate": 0
+    },
+    {
+      "id": 1,
+      "source_id": 1,
+      "title": "GitHub availability report: January 2026",
+      "content": "In January, we experienced two incidents that resulted in degraded performance across GitHub services. January 13 09:38 UTC (lasting 46 minutes) On January 13, 2026, from 09:25 to 10:11 UTC, GitHub Copilot experienced a service outage with error rates averaging 18% and peaking at 100%. This impacted chat features across Copilot Chat, VS Code, JetBrains IDEs, and other dependent products. The incident was triggered by a configuration error introduced during a model update and was initially mitiga",
+      "url": "https://github.blog/news-insights/company-news/github-availability-report-january-2026/",
+      "published_at": "2026-02-11T23:12:34",
+      "translated_title": "GitHub availability report: January 2026",
+      "is_translated": 1,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "GitHub Blog",
+      "source_type": "rss",
+      "category": "",
+      "description": "GitHub 官方博客",
+      "deep_read": 1,
+      "source_translate": 1
+    },
+    {
+      "id": 5,
+      "source_id": 2,
+      "title": "2026-02-11日刊",
+      "content": "前往官网查看完整版 (ai.hubtoday.app)产品与功能更新通义千问发布图像生成模型Qwen-Image-2.0，文字渲染进步但闭源引发社区不满。豆包成为2026春晚合作伙伴，除夕夜抽奖送超10万份科技产品。冯骥公开点赞Seedance 2.0，称影视制作成本将向算力成本靠拢。前沿研究多家顶尖机构密集发布自蒸馏研究，模型无需外部教师即可自我提升。Yuan 3.0 Flash用双算法砍掉75%推理token，准确率反而提升。研究团队提出压缩记忆框架，上下文可从7K外推至175万token。MetamerGen用扩散模型模拟人类注视机制，揭示场景理解规律。研究发现3B参数模型的脑对齐能力已与14B模型持平。行业展望与社会影响......[剩余内容已省略]📢 关于 AI日报 的一次小调整坦白说，想要长久地把AI日报做下去，单靠&quot;为爱发电”确实面临现实压力。为了更有热情的投入精力， 日报网站版需要来自你们的访问。由于 RSS 无法展示广告带来收入，即日起 RSS 将试运行&quot;摘要模式”一段时间。感谢您的理解与陪伴，让我们一起走得更远！👇 点击下方链接，阅读今日完整资讯",
+      "url": "https://ai.hubtoday.app//2026-02/2026-02-11/",
+      "published_at": "2026-02-11T07:55:12",
+      "translated_title": null,
+      "is_translated": 0,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "何夕2077 ai日报",
+      "source_type": "rss",
+      "category": "",
+      "description": "",
+      "deep_read": 0,
+      "source_translate": 0
+    },
+    {
+      "id": 6,
+      "source_id": 2,
+      "title": "2026-02-10日刊",
+      "content": "前往官网查看完整版 (ai.hubtoday.app)产品与功能更新Pony Alpha 疑似为智谱 GLM-5，分词器与 GLM-4 一致，两周内将官宣字节推出 Seedance 2.0 视频生成模型，阅文股价飙升超 9%小红书内测对话式 AI 剪辑工具 OpenStoryline，降低视频制作门槛OpenAI 首款硬件代号 Dime 曝光，定位智能耳机年内发布智元机器人 999 元可租，覆盖拜年求婚等场景订单增 30%千问 APP 联动淘宝飞猪高德请客，首日 9 小时破千万单前沿研究英伟达发布 DreamZero 世界动作模型，140 亿参数泛化能力提升 2 倍全球首个南海海气耦合大模型飞鱼-1.0 广州发布，可部署科考船......[剩余内容已省略]📢 关于 AI日报 的一次小调整坦白说，想要长久地把AI日报做下去，单靠&quot;为爱发电”确实面临现实压力。为了更有热情的投入精力， 日报网站版需要来自你们的访问。由于 RSS 无法展示广告带来收入，即日起 RSS 将试运行&quot;摘要模式”一段时间。感谢您的理解与陪伴，让我们一起走得更远！👇 点击下方链接，阅读今日完整资讯前",
+      "url": "https://ai.hubtoday.app//2026-02/2026-02-10/",
+      "published_at": "2026-02-10T07:55:23",
+      "translated_title": null,
+      "is_translated": 0,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "何夕2077 ai日报",
+      "source_type": "rss",
+      "category": "",
+      "description": "",
+      "deep_read": 0,
+      "source_translate": 0
+    },
+    {
+      "id": 2,
+      "source_id": 1,
+      "title": "Continuous AI in practice: What developers can automate today with agentic CI",
+      "content": "Software engineering has always included work that&rsquo;s repetitive, necessary, and historically difficult to automate. This isn&rsquo;t because it lacks values, but because it resists deterministic rules.&nbsp; Continuous integration (CI) solved part of this by handling tests, builds, formatting, and static analysis&mdash;anything that can be described with deterministic rules. CI excels when correctness can be expressed unambiguously: a test passes or fails, a build succeeds or doesn&rsquo;t",
+      "url": "https://github.blog/ai-and-ml/generative-ai/continuous-ai-in-practice-what-developers-can-automate-today-with-agentic-ci/",
+      "published_at": "2026-02-05T17:00:00",
+      "translated_title": "Continuous AI in practice: What developers can automate today with agentic CI",
+      "is_translated": 1,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "GitHub Blog",
+      "source_type": "rss",
+      "category": "",
+      "description": "GitHub 官方博客",
+      "deep_read": 1,
+      "source_translate": 1
+    },
+    {
+      "id": 3,
+      "source_id": 1,
+      "title": "Pick your agent: Use Claude and Codex on Agent HQ",
+      "content": "Context switching&nbsp;equals&nbsp;friction in software development.&nbsp;Today,&nbsp;we&rsquo;re&nbsp;removing some of that friction with the latest updates to Agent HQ&nbsp;which lets you run coding agents&nbsp;from multiple providers&nbsp;directly inside GitHub and your editor, keeping context, history, and review attached to your work. Copilot Pro+ and Copilot Enterprise users can now run multiple coding agents directly inside GitHub, GitHub Mobile, and Visual Studio Code&nbsp;(with Copilot ",
+      "url": "https://github.blog/news-insights/company-news/pick-your-agent-use-claude-and-codex-on-agent-hq/",
+      "published_at": "2026-02-04T17:00:19",
+      "translated_title": "Pick your agent: Use Claude and Codex on Agent HQ",
+      "is_translated": 1,
+      "created_at": "2026-02-12 13:52:39",
+      "source_name": "GitHub Blog",
+      "source_type": "rss",
+      "category": "",
+      "description": "GitHub 官方博客",
+      "deep_read": 1,
+      "source_translate": 1
+    }
+  ],
+  "statistics": {
+    "sources": {
+      "total_sources": 2,
+      "active_sources": 2
+    },
+    "articles": {
+      "total_articles": 6,
+      "latest_article": "2026-02-12T07:55:12"
+    },
+    "by_type": {
+      "rss": 2
+    },
+    "by_category": {
+      "": 2
+    },
+    "translated_count": 3
+  },
+  "updated_at": "2026-02-12T13:52:39.750426"
+}
