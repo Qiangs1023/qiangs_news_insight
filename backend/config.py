@@ -5,8 +5,9 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# 加载环境变量
-load_dotenv()
+# 加载环境变量（指定项目根目录的 .env 文件，override=True 确保 .env 优先）
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(dotenv_path=BASE_DIR / '.env', override=True)
 
 class Config:
     """配置类"""
