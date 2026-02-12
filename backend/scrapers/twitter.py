@@ -1,6 +1,7 @@
 """
 Twitter抓取模块
 """
+import re
 from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
@@ -23,54 +24,88 @@ class TwitterScraper(BaseScraper):
         """
         print(f"Fetching Twitter from {self.name}: {self.url}")
 
-        # 检查API密钥
-        if not all([Config.TWITTER_API_KEY, Config.TWITTER_API_SECRET]):
-            print("Twitter API keys not configured, skipping...")
+        # 检查API密钥 - 优先使用 BEARER_TOKEN
+        bearer_token = Config.TWITTER_BEARER_TOKEN or Config.TWITTER_API_KEY
+        if not bearer_token:
+            print("Twitter Bearer Token not configured, skipping...")
             return []
 
-        # TODO: 实现Twitter API调用
-        # 注意：Twitter API v2需要认证
-        # 这里是占位符实现
+        # 尝试使用 tweepy
+        try:
+            import tweepy
+        except ImportError:
+            print("tweepy not installed, skipping Twitter scraping...")
+            return []
 
-        articles = []
+        try:
+            # 使用 Twitter API v2 (Bearer Token)
+            client = tweepy.Client(bearer_token=bearer_token)
 
-        # 示例代码（需要安装tweepy）：
-        # import tweepy
-        #
-        # auth = tweepy.OAuthHandler(
-        #     Config.TWITTER_API_KEY,
-        #     Config.TWITTER_API_SECRET
-        # )
-        # auth.set_access_token(
-        #     Config.TWITTER_ACCESS_TOKEN,
-        #     Config.TWITTER_ACCESS_TOKEN_SECRET
-        # )
-        #
-        # api = tweepy.Client(auth)
-        #
-        # 从URL提取list_id
-        # list_id = self._extract_list_id(self.url)
-        #
-        # tweets = api.get_list_tweets(id=list_id, max_results=self.max_tweets)
-        #
-        # for tweet in tweets.data:
-        #     article = Article(
-        #         title=tweet.text[:100],
-        #         url=f"https://twitter.com/i/web/status/{tweet.id}",
-        #         content=tweet.text,
-        #         published_at=tweet.created_at,
-        #         author=tweet.author_id
-        #     )
-        #     articles.append(article)
+            # 从URL提取list_id
+            list_id = self._extract_list_id(self.url)
+            if not list_id:
+                print(f"Could not extract list ID from URL: {self.url}")
+                return []
 
-        print(f"Twitter scraping not fully implemented yet")
-        return articles
+            # 获取 List 推文
+            tweets = client.get_list_tweets(
+                id=list_id,
+                max_results=min(self.max_tweets, 100),
+                tweet_fields=['created_at', 'author_id', 'public_metrics']
+            )
+
+            articles = []
+            if tweets.data:
+                for tweet in tweets.data:
+                    # 获取用户信息
+                    author_id = tweet.author_id
+                    author_name = ""
+                    if author_id:
+                        users = client.get_users(ids=[author_id])
+                        if users.data:
+                            author_name = users.data[0].username
+
+                    article = Article(
+                        title=self._truncate_text(tweet.text, 100),
+                        url=f"https://twitter.com/i/web/status/{tweet.id}",
+                        content=tweet.text,
+                        published_at=tweet.created_at,
+                        author=author_name
+                    )
+                    articles.append(article)
+
+            print(f"Fetched {len(articles)} tweets from {self.name}")
+            return articles
+
+        except Exception as e:
+            print(f"Error fetching Twitter: {e}")
+            return []
 
     def _extract_list_id(self, url: str) -> str:
         """从URL提取List ID"""
-        # 示例URL: https://twitter.com/i/lists/123456789
-        # TODO: 实现提取逻辑
+        # 示例URL格式:
+        # https://twitter.com/i/lists/123456789
+        # https://x.com/i/lists/123456789
+        # https://twitter.com/{username}/lists/{list_id}
+        # https://x.com/{username}/lists/{list_id}
+
+        patterns = [
+            r'(?:twitter|x)\.com/i/lists/(\d+)',
+            r'(?:twitter|x)\.com/[^/]+/lists/(\d+)',
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, url)
+            if match:
+                return match.group(1)
+
         return ''
+
+    def _truncate_text(self, text: str, max_length: int) -> str:
+        """截断文本"""
+        if len(text) <= max_length:
+            return text
+        return text[:max_length - 3] + '...'
 
 
 def create_twitter_scraper(name: str, url: str, config: Dict = None) -> TwitterScraper:

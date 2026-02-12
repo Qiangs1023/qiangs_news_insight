@@ -16,7 +16,9 @@ class Config:
     NOTION_DATABASE_ID = os.getenv('NOTION_DATABASE_ID', 'virtual_database_id')
 
     # Twitter API配置
-    TWITTER_API_KEY = os.getenv('TWITTER_API_KEY', '')
+    # Twitter API v2 使用 Bearer Token
+    TWITTER_BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN', '')
+    TWITTER_API_KEY = os.getenv('TWITTER_API_KEY', '')  # 兼容旧配置
     TWITTER_API_SECRET = os.getenv('TWITTER_API_SECRET', '')
     TWITTER_ACCESS_TOKEN = os.getenv('TWITTER_ACCESS_TOKEN', '')
     TWITTER_ACCESS_TOKEN_SECRET = os.getenv('TWITTER_ACCESS_TOKEN_SECRET', '')

@@ -8,6 +8,11 @@ from datetime import datetime
 from .base import BaseScraper, Article
 from backend.config import Config
 
+# 自定义 User-Agent
+DEFAULT_HEADERS = {
+    'User-Agent': 'NewsAggregator/1.0 (+https://github.com/Qiangs1023/qiangs_news_insight)'
+}
+
 
 class BlogScraper(BaseScraper):
     """博客抓取器"""
@@ -27,7 +32,7 @@ class BlogScraper(BaseScraper):
 
         try:
             # 获取页面内容
-            response = requests.get(self.url, timeout=Config.REQUEST_TIMEOUT)
+            response = requests.get(self.url, headers=DEFAULT_HEADERS, timeout=Config.REQUEST_TIMEOUT)
             response.raise_for_status()
 
             soup = BeautifulSoup(response.content, 'html.parser')

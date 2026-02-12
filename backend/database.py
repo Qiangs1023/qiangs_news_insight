@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import List, Dict, Optional
 from contextlib import contextmanager
 from backend.config import Config
+from backend.utils.logger import logger
 
 
 class Database:
@@ -155,6 +156,7 @@ class Database:
                 return cursor.lastrowid
             except sqlite3.IntegrityError:
                 # URL已存在，跳过
+                logger.debug(f"Article already exists (URL duplicate): {url}")
                 return None
 
     def update_article_translation(self, article_id: int, translated_title: str):
@@ -212,11 +214,19 @@ class Database:
 
             # 订阅源统计
             cursor.execute('SELECT COUNT(*) as total_sources, SUM(CASE WHEN active=1 THEN 1 ELSE 0 END) as active_sources FROM sources')
-            sources_stats = dict(cursor.fetchone())
+            sources_row = cursor.fetchone()
+            sources_stats = {
+                'total_sources': sources_row['total_sources'] if sources_row else 0,
+                'active_sources': sources_row['active_sources'] if sources_row else 0
+            }
 
             # 文章统计
             cursor.execute('SELECT COUNT(*) as total_articles, MAX(published_at) as latest_article FROM articles')
-            articles_stats = dict(cursor.fetchone())
+            articles_row = cursor.fetchone()
+            articles_stats = {
+                'total_articles': articles_row['total_articles'] if articles_row else 0,
+                'latest_article': articles_row['latest_article'] if articles_row else None
+            }
 
             # 按类型统计
             cursor.execute('SELECT type, COUNT(*) as count FROM sources GROUP BY type')
@@ -228,7 +238,8 @@ class Database:
 
             # 翻译统计
             cursor.execute('SELECT COUNT(*) as translated FROM articles WHERE is_translated = 1')
-            translated_count = cursor.fetchone()['translated']
+            translated_row = cursor.fetchone()
+            translated_count = translated_row['translated'] if translated_row else 0
 
             return {
                 'sources': sources_stats,

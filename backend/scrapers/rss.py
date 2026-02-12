@@ -6,6 +6,9 @@ from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
 
+# 自定义 User-Agent
+feedparser.USER_AGENT = "NewsAggregator/1.0 (+https://github.com/Qiangs1023/qiangs_news_insight)"
+
 
 class RSSScraper(BaseScraper):
     """RSS抓取器"""

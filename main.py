@@ -2,6 +2,7 @@
 新闻聚合器主入口
 """
 from datetime import datetime
+import hashlib
 from typing import Dict, List
 
 from backend.config import Config
@@ -66,7 +67,6 @@ class NewsAggregator:
                 if article.get('url'):
                     existing_urls.add(article['url'])
                 if article.get('title'):
-                    import hashlib
                     title_hash = hashlib.md5(article['title'].encode()).hexdigest()
                     existing_titles.add(title_hash)
 

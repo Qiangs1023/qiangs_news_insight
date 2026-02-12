@@ -61,8 +61,9 @@ class NotionIntegration:
 
                 # # Limit (Number)
                 limit = 0
-                if props.get('# Limit', {}).get('number') is not None:
-                    limit = int(props['# Limit']['number'])
+                limit_prop = props.get('# Limit', {})
+                if limit_prop and limit_prop.get('number') is not None:
+                    limit = int(limit_prop['number'])
 
                 # Deep Read (Checkbox)
                 deep_read = props.get('Deep Read', {}).get('checkbox', False)
