@@ -4,17 +4,17 @@
 from datetime import datetime
 from typing import Dict, List
 
-from config import Config
-from database import Database
-from integrations.notion import NotionIntegration
-from scrapers.rss import create_rss_scraper
-from scrapers.twitter import create_twitter_scraper
-from scrapers.youtube import create_youtube_scraper
-from scrapers.blog import create_blog_scraper
-from processors.dedup import deduplicate_articles
-from processors.translator import create_translator, translate_articles
-from generators.static import generate_static_pages
-from utils.logger import logger
+from backend.config import Config
+from backend.database import Database
+from backend.integrations.notion import NotionIntegration
+from backend.scrapers.rss import create_rss_scraper
+from backend.scrapers.twitter import create_twitter_scraper
+from backend.scrapers.youtube import create_youtube_scraper
+from backend.scrapers.blog import create_blog_scraper
+from backend.processors.dedup import deduplicate_articles
+from backend.processors.translator import create_translator, translate_articles
+from backend.generators.static import generate_static_pages
+from backend.utils.logger import logger
 
 
 class NewsAggregator:

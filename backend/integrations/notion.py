@@ -4,7 +4,7 @@ Notion集成模块
 from typing import List, Dict, Optional
 from datetime import datetime
 from notion_client import Client
-from config import Config
+from backend.config import Config
 
 
 class NotionIntegration:

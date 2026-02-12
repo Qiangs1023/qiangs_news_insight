@@ -4,7 +4,7 @@
 import requests
 from typing import Dict, Optional
 from abc import ABC, abstractmethod
-from config import Config
+from backend.config import Config
 
 
 class Translator(ABC):

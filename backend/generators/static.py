@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 from typing import List, Dict
-from config import Config
+from backend.config import Config
 
 
 class StaticPageGenerator:

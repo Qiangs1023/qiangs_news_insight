@@ -5,7 +5,7 @@ import logging
 import sys
 from pathlib import Path
 from datetime import datetime
-from config import Config
+from backend.config import Config
 
 
 class Logger:

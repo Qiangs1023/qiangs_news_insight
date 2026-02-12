@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
-from config import Config
+from backend.config import Config
 
 
 class BlogScraper(BaseScraper):

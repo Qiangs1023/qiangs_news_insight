@@ -5,7 +5,7 @@ import sqlite3
 from datetime import datetime
 from typing import List, Dict, Optional
 from contextlib import contextmanager
-from config import Config
+from backend.config import Config
 
 
 class Database:
