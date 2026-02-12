@@ -15,6 +15,7 @@ from backend.scrapers.blog import create_blog_scraper
 from backend.processors.dedup import deduplicate_articles
 from backend.processors.translator import create_translator, translate_articles
 from backend.generators.static import generate_static_pages
+from backend.generators.markdown import generate_daily_markdown, generate_latest_markdown
 from backend.utils.logger import logger
 
 
@@ -124,6 +125,13 @@ class NewsAggregator:
 
             generate_static_pages(articles_for_frontend, stats)
             logger.info("Static pages generated")
+
+            # 8. 生成 Markdown 文件
+            daily_md_path = generate_daily_markdown(articles_for_frontend)
+            logger.info(f"Generated daily markdown: {daily_md_path}")
+
+            latest_md_path = generate_latest_markdown(articles_for_frontend)
+            logger.info(f"Generated latest markdown: {latest_md_path}")
 
             # 8. 打印统计
             elapsed = (datetime.now() - start_time).total_seconds()
