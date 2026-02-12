@@ -31,18 +31,28 @@ class NotionIntegration:
             - description: 描述
         """
         try:
-            response = self.client.databases.query(
-                database_id=self.database_id,
+            # 使用 search API 查询数据库中的项目
+            response = self.client.search(
+                query="",
                 filter={
-                    "property": "Status",
-                    "checkbox": {
-                        "equals": True
-                    }
-                }
+                    "value": "page",
+                    "property": "object"
+                },
+                page_size=100
             )
 
+            # 过滤出属于指定数据库的页面
+            results = []
+            for item in response.get('results', []):
+                if item.get('parent', {}).get('database_id') == self.database_id:
+                    # 检查 Status 是否为 True
+                    props = item.get('properties', {})
+                    status = props.get('Status', {}).get('checkbox', False)
+                    if status:
+                        results.append(item)
+
             sources = []
-            for result in response.get('results', []):
+            for result in results:
                 props = result['properties']
 
                 # 提取订阅源信息
