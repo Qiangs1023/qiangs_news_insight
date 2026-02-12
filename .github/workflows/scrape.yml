@@ -43,7 +43,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
         run: |
-          python -m backend.main
+          python main.py
 
       - name: Upload database artifact
         uses: actions/upload-artifact@v4

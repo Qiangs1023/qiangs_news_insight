@@ -192,7 +192,7 @@ class NewsAggregator:
 
             if not source.get('feed_url') and source_type not in ['youtube', 'twitter']:
                 # 尝试自动发现RSS feed
-                from utils.rss_discoverer import discover_rss_feed
+                from backend.utils.rss_discoverer import discover_rss_feed
                 discovered_feed = discover_rss_feed(url)
 
                 if discovered_feed:
