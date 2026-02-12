@@ -43,7 +43,7 @@ class Database:
                     name TEXT NOT NULL,
                     feed_url TEXT,
                     url TEXT,
-                    limit INTEGER DEFAULT 0,
+                    "limit" INTEGER DEFAULT 0,
                     deep_read BOOLEAN DEFAULT 0,
                     translate BOOLEAN DEFAULT 0,
                     category TEXT,
@@ -104,7 +104,7 @@ class Database:
             cursor = conn.cursor()
             cursor.execute('''
                 INSERT INTO sources (
-                    notion_id, type, name, feed_url, url, limit,
+                    notion_id, type, name, feed_url, url, "limit",
                     deep_read, translate, category, description, active
                 )
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -113,7 +113,7 @@ class Database:
                     name = excluded.name,
                     feed_url = excluded.feed_url,
                     url = excluded.url,
-                    limit = excluded.limit,
+                    "limit" = excluded."limit",
                     deep_read = excluded.deep_read,
                     translate = excluded.translate,
                     category = excluded.category,
