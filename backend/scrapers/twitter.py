@@ -1,7 +1,7 @@
 """
 Twitter抓取模块
 """
-from typing import List
+from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
 from config import Config
