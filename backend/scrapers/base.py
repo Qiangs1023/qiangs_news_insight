@@ -3,7 +3,7 @@
 """
 from abc import ABC, abstractmethod
 from typing import List, Dict
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 
 
@@ -67,12 +67,42 @@ class BaseScraper(ABC):
                     print(f"Failed to fetch {self.name} after {self.max_retries} attempts")
                     return []
 
+    def filter_today(self, articles: List[Article]) -> List[Article]:
+        """
+        只保留今天的文章
+
+        Args:
+            articles: 文章列表
+
+        Returns:
+            只包含今天发布文章的列表
+        """
+        today = datetime.now().date()
+        today_start = datetime.combine(today, datetime.min.time())
+        today_end = datetime.combine(today + timedelta(days=1), datetime.min.time())
+
+        filtered = []
+        for article in articles:
+            if article.published_at:
+                # 处理时区
+                pub_date = article.published_at
+                if pub_date.tzinfo is not None:
+                    pub_date = pub_date.replace(tzinfo=None)
+                if today_start <= pub_date < today_end:
+                    filtered.append(article)
+
+        if len(articles) != len(filtered):
+            print(f"Filtered {len(articles)} -> {len(filtered)} articles (today only)")
+        return filtered
+
     def scrape(self) -> List[Dict]:
         """
-        抓取并返回文章字典列表
+        抓取并返回文章字典列表（只保留今天的内容）
 
         Returns:
             文章字典列表
         """
         articles = self.fetch_with_retry()
-        return [article.to_dict() for article in articles]
+        # 过滤只保留今天的文章
+        today_articles = self.filter_today(articles)
+        return [article.to_dict() for article in today_articles]
