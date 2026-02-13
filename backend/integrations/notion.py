@@ -123,6 +123,8 @@ class NotionIntegration:
                     source_type = 'rss'
                 elif (url or '') and ('youtube.com' in url):
                     source_type = 'youtube'
+                elif (url or '') and ('x.com' in url or 'twitter.com' in url):
+                    source_type = 'twitter'
                 else:
                     source_type = 'blog'
 
