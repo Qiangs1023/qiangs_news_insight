@@ -1,95 +1,15 @@
 # 今日新闻 - 2026年02月13日
 
-总计: 17 篇
-
----
-
-## Hugging Face Daily Papers
-
-### Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation
-*Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation*
-> 📅 02月13日 17:19
-> [阅读原文](https://huggingface.co/papers/2602.12125)
-
-### Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models
-*Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models*
-> 📅 02月13日 17:19
-> [阅读原文](https://huggingface.co/papers/2602.12036)
-
-### The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies
-*The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies*
-> 📅 02月13日 17:19
-> [阅读原文](https://huggingface.co/papers/2602.09877)
-
----
-
-## Github Trending
-
-### danielmiessler /Personal_AI_Infrastructure
-*danielmiessler /Personal_AI_Infrastructure*
-> 📅 02月13日 17:19
-> [阅读原文](https://github.com/sponsors/danielmiessler)
-> Agentic AI Infrastructure for magnifying HUMAN capabilities....
-
-### ChromeDevTools /chrome-devtools-mcp
-*ChromeDevTools /chrome-devtools-mcp*
-> 📅 02月13日 17:19
-> [阅读原文](https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp)
-> Chrome DevTools for coding agents...
-
-### SynkraAI /aios-core
-*SynkraAI /aios-core*
-> 📅 02月13日 17:19
-> [阅读原文](https://github.com/login?return_to=%2FSynkraAI%2Faios-core)
-> Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...
-
----
-
-## techcrunch-AI
-
-### Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10
-*Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10*
-> 📅 02月13日 17:16
-> [阅读原文](https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/)
-> After Anthropic's Super Bowl ads, Claude's app reached the top 10 on the U.S. App Store....
-
-### Roku to launch streaming bundles as part of its efforts to continue growing its profitability
-*Roku to launch streaming bundles as part of its efforts to continue growing its profitability*
-> 📅 02月13日 16:39
-> [阅读原文](https://techcrunch.com/2026/02/13/roku-to-launch-streaming-bundles-as-part-of-its-efforts-to-continue-growing-its-profitability/)
-> Roku delivered an impressive Q4, posting net income of $80.5 million. The company also outlined plans for streaming bundles....
-
-### A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
-*A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup*
-> 📅 02月13日 16:24
-> [阅读原文](https://techcrunch.com/2026/02/13/a-stanford-grad-student-created-an-algorithm-to-help-his-classmates-find-love-now-date-drop-is-the-basis-of-his-new-startup/)
-> "Our matches convert to actual dates at about 10x the rate of Tinder," Weng told TechCrunch....
-
----
-
-## Hacker news
-
-### Open Source Is Not About You (2018)
-*Open Source Is Not About You (2018)*
-> 📅 02月13日 14:36
-> [阅读原文](https://gist.github.com/richhickey/1563cddea1002958f96e7ba9519972d9)
-> Comments...
-
-### Zed editor switching graphics lib from blade to wgpu
-*Zed editor switching graphics lib from blade to wgpu*
-> 📅 02月13日 14:03
-> [阅读原文](https://github.com/zed-industries/zed/pull/46758)
-> Comments...
-
-### Monosketch
-*Monosketch*
-> 📅 02月13日 12:18
-> [阅读原文](https://monosketch.io/)
-> Comments...
+总计: 18 篇
 
 ---
 
 ## 何夕2077 ai日报
+
+### 2026-02-14日刊
+> 📅 02月14日 07:25
+> [阅读原文](https://ai.hubtoday.app//2026-02/2026-02-14/)
+> 前往官网查看完整版 (ai.hubtoday.app)产品与功能更新GLM-5 发布最强开源模型，实测能力比肩 GPT-5.3。谷歌 Gemini 3 发布深度思考版，推理能力登顶 SOTA。小红书 发布最严 AI 内容管理新规，强制标识合成内容。腾讯视频 上线首部 AI 国风漫剧，AI 深度参与全链路制作。雷神科技 全线出击 AI 硬件市场，发布多款终端新品。前沿研究清北联合 发布新评测，指出机...
 
 ### 2026-02-13日刊
 > 📅 02月13日 11:47
@@ -100,6 +20,91 @@
 > 📅 02月12日 07:55
 > [阅读原文](https://ai.hubtoday.app//2026-02/2026-02-12/)
 > 前往官网查看完整版 (ai.hubtoday.app)产品与功能更新阿里推出机器人模型RynnBrain，性能超越谷歌Gemini。网易有道发布龙虾AI，支持跨应用自动处理工作。DeepSeek更新App，上下文扩展至一百万Token。字节发布Seedance 2.0，支持将小说直接生成视频。谷歌Gemini 3 Flash能利用代码自动处理视觉任务。前沿研究上交大研究发现AI社交欺诈风险，模型越...
+
+---
+
+## Github Trending
+
+### danielmiessler /Personal_AI_Infrastructure
+*danielmiessler /Personal_AI_Infrastructure*
+> 📅 02月13日 23:40
+> [阅读原文](https://github.com/sponsors/danielmiessler)
+> Agentic AI Infrastructure for magnifying HUMAN capabilities....
+
+### ChromeDevTools /chrome-devtools-mcp
+*ChromeDevTools /chrome-devtools-mcp*
+> 📅 02月13日 23:40
+> [阅读原文](https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp)
+> Chrome DevTools for coding agents...
+
+### SynkraAI /aios-core
+*SynkraAI /aios-core*
+> 📅 02月13日 23:40
+> [阅读原文](https://github.com/login?return_to=%2FSynkraAI%2Faios-core)
+> Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...
+
+---
+
+## Hugging Face Daily Papers
+
+### DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing
+*DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing*
+> 📅 02月13日 23:40
+> [阅读原文](https://huggingface.co/papers/2602.12205)
+
+### Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models
+*Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models*
+> 📅 02月13日 23:40
+> [阅读原文](https://huggingface.co/papers/2602.12036)
+
+### The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies
+*The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies*
+> 📅 02月13日 23:40
+> [阅读原文](https://huggingface.co/papers/2602.09877)
+
+---
+
+## Hacker news
+
+### AI bot crabby-rathbun is still polluting open source
+*AI bot crabby-rathbun is still polluting open source*
+> 📅 02月13日 22:22
+> [阅读原文](https://www.nickolinger.com/blog/2026-02-13-ai-bot-crabby-rathbun-is-still-going/)
+> Comments...
+
+### Show HN: Data Engineering Book – An open source, community-driven guide
+*Show HN: Data Engineering Book – An open source, community-driven guide*
+> 📅 02月13日 21:35
+> [阅读原文](https://github.com/datascale-ai/data_engineering_book/blob/main/README_en.md)
+> Comments...
+
+### GPT-5.2 derives a new result in theoretical physics
+*GPT-5.2 derives a new result in theoretical physics*
+> 📅 02月13日 19:20
+> [阅读原文](https://openai.com/index/new-result-theoretical-physics/)
+> Comments...
+
+---
+
+## techcrunch-AI
+
+### Airbnb says a third of its customer support is now handled by AI in the US and Canada
+*Airbnb says a third of its customer support is now handled by AI in the US and Canada*
+> 📅 02月13日 22:12
+> [阅读原文](https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/)
+> Airbnb was poised to introduce an app that doesn't just search for you, but one that "knows you." CEO Brian Chesky said, "It will help guests plan their entire trip, help hosts better run their busine...
+
+### Fintech lending giant Figure confirms data breach
+*Fintech lending giant Figure confirms data breach*
+> 📅 02月13日 21:02
+> [阅读原文](https://techcrunch.com/2026/02/13/fintech-lending-giant-figure-confirms-data-breach/)
+> The company said hackers downloaded “a limited number of files” after breaking into an employee’s account. The hacking group ShinyHunters took responsibility for the breach....
+
+### Why top talent is walking away from OpenAI and xAI
+*Why top talent is walking away from OpenAI and xAI*
+> 📅 02月13日 21:00
+> [阅读原文](https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/)
+> AI companies have been hemorrhaging&#160;talent&#160;the past few weeks. Half of&#160;xAI’s&#160;founding team&#160;has left the company — some on their own, others through “restructuring” — while Ope...
 
 ---
 
@@ -122,4 +127,4 @@
 
 ---
 
-*生成时间: 2026-02-13 17:19:36*
+*生成时间: 2026-02-13 23:41:16*
