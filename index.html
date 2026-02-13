@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Aggregator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="bg-dark text-white py-3 mb-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h4 mb-0">News Aggregator</h1>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge bg-info">Total: 30</span>
+                    <span class="badge bg-success">Sources: 10</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="filters mb-4">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search articles...">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="sourceFilter">
+                        <option value="">All Sources</option>
+                        <!-- Sources will be added dynamically -->
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="dateFilter">
+                        <option value="">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="articlesContainer" class="row g-4">
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">Github Trending</span>
+                        <h5 class="card-title">
+                            <a href="https://github.com/sponsors/danielmiessler" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                danielmiessler /Personal_AI_Infrastructure
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Agentic AI Infrastructure for magnifying HUMAN capabilities....</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 15:30
+                            </small>
+                            <a href="https://github.com/sponsors/danielmiessler" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">Github Trending</span>
+                        <h5 class="card-title">
+                            <a href="https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                ChromeDevTools /chrome-devtools-mcp
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Chrome DevTools for coding agents...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 15:30
+                            </small>
+                            <a href="https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">Github Trending</span>
+                        <h5 class="card-title">
+                            <a href="https://github.com/login?return_to=%2FSynkraAI%2Faios-core" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                SynkraAI /aios-core
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 15:30
+                            </small>
+                            <a href="https://github.com/login?return_to=%2FSynkraAI%2Faios-core" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022322810765656076" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                @shiuelu 海外用Lark，估计可以用非86
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">@shiuelu 海外用Lark，估计可以用非86...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 14:51
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022322810765656076" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022321370819137624" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                强烈推荐安装  https://t.co/vXTdPlAISO
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">强烈推荐安装  https://t.co/vXTdPlAISO...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 14:46
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022321370819137624" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022321310765048295" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                这个Github 库是 X 上哪个朋友写的，太酷了！
+
+自带Gemini 和 Codex的 MCP。
+
+让Claude Code组织分工，一次性完成复杂编程，断了也能恢复（有Spec文件）。
+
+...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">这个Github 库是 X 上哪个朋友写的，太酷了！
+
+自带Gemini 和 Codex的 MCP。
+
+让Claude Code组织分工，一次性完成复杂编程，断了也能恢复（有Spec文件）。
+
+比如让Gemini写前端，Codex修bug，充分利用模型优势。
+
+哪怕不编程，ChatGPT订阅送的Codex和谷歌的Gemini Cli都要被榨干啊。
+
+地址见评论 https://t.co/Qr9lI...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 14:45
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022321310765048295" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022156963157799091" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                原文 https://t.co/P32666i5jO
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">原文 https://t.co/P32666i5jO...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:52
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022156963157799091" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022156896862605483" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                AI正在让未来坍缩，两个维度同时发生。
+
+第一种坍缩：横向的
+
+工程师、产品经理、市场、分析师、设计师、运营负责人……曾经泾渭分明的职业，正在快速融合成一个元能力：
+
+指挥AI Agent完成工...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">AI正在让未来坍缩，两个维度同时发生。
+
+第一种坍缩：横向的
+
+工程师、产品经理、市场、分析师、设计师、运营负责人……曾经泾渭分明的职业，正在快速融合成一个元能力：
+
+指挥AI Agent完成工作。
+
+第二种坍缩：时间的
+
+Epoch AI的数据显示，2024年4月开始，AI能力的提升速度几乎翻了一倍。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:52
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022156896862605483" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022153217753448783" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                不用agent team，直接翻译改写的文章。
+
+Claude Opus 4.6 赢在“省心”。
+Codex 5.3 赢在“天花板”。
+
+https://t.co/zDFLtjLQEd http...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">不用agent team，直接翻译改写的文章。
+
+Claude Opus 4.6 赢在“省心”。
+Codex 5.3 赢在“天花板”。
+
+https://t.co/zDFLtjLQEd https://t.co/7kNeTIQ9UM https://t.co/V4YBEjcuGT...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:37
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022153217753448783" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022152497775931643" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                Claude Code帮搭建好，agent teams写稿，然后发布到自己的网站 https://t.co/RHKyaB0yWb
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Claude Code帮搭建好，agent teams写稿，然后发布到自己的网站 https://t.co/RHKyaB0yWb...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:34
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022152497775931643" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022151571220664539" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                谷歌这动作也太慢了，现在才有专用的Vision Pro专用的YouTube版本。 https://t.co/BgEK6UEGIH
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">谷歌这动作也太慢了，现在才有专用的Vision Pro专用的YouTube版本。 https://t.co/BgEK6UEGIH...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:31
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022151571220664539" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2022149139816169912" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                Slack前CEO说过一句话特别到位："创新的唯一真实衡量标准，是人的行为是否改变了。"
+
+左：把AI工具塞进旧业务模式
+右：以AI为基础重新设计业务
+
+"如果用AI重新设计一个XX公司，AI做...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Slack前CEO说过一句话特别到位："创新的唯一真实衡量标准，是人的行为是否改变了。"
+
+左：把AI工具塞进旧业务模式
+右：以AI为基础重新设计业务
+
+"如果用AI重新设计一个XX公司，AI做它擅长的，人做人擅长的，分别是什么？" https://t.co/bTwaKwidam...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-13 03:21
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2022149139816169912" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021958043811070407" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                @Jason_Young1231 怪不得，解惑了。
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">@Jason_Young1231 怪不得，解惑了。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 14:42
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021958043811070407" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021955486791372983" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                只要敢提要求，Claude Code就敢出方案干。
+
+且比我设想的方案还要好很多。
+
+自己SSH到服务器，查询已经有的网站配置。
+
+建议不用Hexo，转用Hugo+PaperMod，说内置SEO...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">只要敢提要求，Claude Code就敢出方案干。
+
+且比我设想的方案还要好很多。
+
+自己SSH到服务器，查询已经有的网站配置。
+
+建议不用Hexo，转用Hugo+PaperMod，说内置SEO功能，Cli支持的也更好。
+
+另外，还说干这件事符合我的TELOS准则。 https://t.co/nl2z4da9vT...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 14:32
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021955486791372983" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021950980871663934" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                Lex Fridman访谈OpenClaw作者了，先Mark后看。
+
+https://t.co/kPVVZbyvfd
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">Lex Fridman访谈OpenClaw作者了，先Mark后看。
+
+https://t.co/kPVVZbyvfd...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 14:14
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021950980871663934" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021948868297208282" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                @firstnamewdyc 哎，也是。
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">@firstnamewdyc 哎，也是。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 14:05
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021948868297208282" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021947928584368362" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                很早前也说过，一定要学会保护自己的注意力。
+
+这是最宝贵的，AI时代来了，全部应验。
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">很早前也说过，一定要学会保护自己的注意力。
+
+这是最宝贵的，AI时代来了，全部应验。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 14:02
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021947928584368362" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021947286088298918" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                群里在聊李笑来，我觉得笑来老师真是活在未来的人。
+
+很早受他影响，把拼音输入换成了双拼（未来可能是语音）
+
+还参加过他组织的写作打卡训练营、YC视频课训练营。
+
+十多年前他就告诉大家定投比特币，...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">群里在聊李笑来，我觉得笑来老师真是活在未来的人。
+
+很早受他影响，把拼音输入换成了双拼（未来可能是语音）
+
+还参加过他组织的写作打卡训练营、YC视频课训练营。
+
+十多年前他就告诉大家定投比特币，多读论文，多学英语，多学编程。
+
+跟进任何一条，都会有不小的收获，感恩的❤...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 13:59
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021947286088298918" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021945535339672004" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                以前从没发生过，感觉 Opus 在进化。
+
+它会知道调用Agent执行效率更高。 https://t.co/TLzmdJUikr
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">以前从没发生过，感觉 Opus 在进化。
+
+它会知道调用Agent执行效率更高。 https://t.co/TLzmdJUikr...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 13:52
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021945535339672004" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021927668221194274" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                原文地址 https://t.co/Zqh3GCJfPn
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">原文地址 https://t.co/Zqh3GCJfPn...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 12:41
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021927668221194274" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021927043236343936" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                最近经常听到AI杀死了SaaS。
+
+读到篇文章，说的比较中肯，AI翻译部分，原地址见评论。
+
+AI 和 vibe coding 为什么会动摇SaaS？
+
+SaaS 一直被认为是地球上最赚钱的商业...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">最近经常听到AI杀死了SaaS。
+
+读到篇文章，说的比较中肯，AI翻译部分，原地址见评论。
+
+AI 和 vibe coding 为什么会动摇SaaS？
+
+SaaS 一直被认为是地球上最赚钱的商业模式之一。
+
+原因很简单，开发一次，卖无数次，边际成本几乎为零。
+
+现在有了Vibe Coding，客户发现，自己好像也能"做"软件了。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 12:39
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021927043236343936" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021885740578484463" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                原文地址 https://t.co/kp5X4LX06j
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">原文地址 https://t.co/kp5X4LX06j...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 09:55
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021885740578484463" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021885631639761373" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                读到篇文章，角度很有意思，给Apple出主意啊，哈哈哈
+
+OpenClaw 才是 Apple Intelligence该有的样子！
+
+最近Mac Mini出现了一个很有意思的现象：到处卖断货。
+...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">读到篇文章，角度很有意思，给Apple出主意啊，哈哈哈
+
+OpenClaw 才是 Apple Intelligence该有的样子！
+
+最近Mac Mini出现了一个很有意思的现象：到处卖断货。
+
+但不是因为大家突然需要一台小方盒子当咖啡桌摆件。
+
+你去Reddit或者Hacker News逛一圈就会发现，大量用户买Mac Mini的理由只有一个：跑AI...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 09:54
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021885631639761373" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021879840220328420" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                朋友觉得：AI取代可能不止部分脑力劳动者，“体力劳动”者可能也会很惨。
+
+AI取代“体力劳动者”，不是替代他们干活，而是活儿直接没了。
+
+甚至都不用等机器人技术成熟。
+
+比如文生视频成熟之后，大...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">朋友觉得：AI取代可能不止部分脑力劳动者，“体力劳动”者可能也会很惨。
+
+AI取代“体力劳动者”，不是替代他们干活，而是活儿直接没了。
+
+甚至都不用等机器人技术成熟。
+
+比如文生视频成熟之后，大量摄影师、演员、化妆师、摄影棚的保安、保洁都不需要了...
+
+先干掉几百万个岗位。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 09:31
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021879840220328420" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021863227223867743" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                @yangqing_66 嗨，我不专业，我喜欢看@karminski3 牙医的硬核评测。
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">@yangqing_66 嗨，我不专业，我喜欢看@karminski3 牙医的硬核评测。...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 08:25
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021863227223867743" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021857087626916101" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                感觉现在已经不知道怎么评测大模型了。
+
+专业有专业的评测数据集，普通人用大模型普遍用的很浅。
+
+挖空心思找到相对实用场景的 aha-moment太难了。
+
+大家拿到新模型一般会怎么测啊？
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">感觉现在已经不知道怎么评测大模型了。
+
+专业有专业的评测数据集，普通人用大模型普遍用的很浅。
+
+挖空心思找到相对实用场景的 aha-moment太难了。
+
+大家拿到新模型一般会怎么测啊？...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-12 08:01
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021857087626916101" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021735804276719863" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                已经有一个多月没有钓鱼了！
+
+除了天气原因，都是因为AI技术发展太快，没时间娱乐了。😂
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">已经有一个多月没有钓鱼了！
+
+除了天气原因，都是因为AI技术发展太快，没时间娱乐了。😂...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-11 23:59
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021735804276719863" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021627716659994747" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                下载地址：https://t.co/jQMLZ78T7N  
+邀请码：521NHO
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">下载地址：https://t.co/jQMLZ78T7N  
+邀请码：521NHO...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-11 16:49
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021627716659994747" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021627471234519178" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                elys，一个真人和AI同时存在的社交产品。
+
+克隆声音，选MBTI，让你回答问题了解你。
+
+产品设计有点意思，目前需要邀请码，看上架信息是个人开发者？
+
+感觉完整度还挺高。
+
+地址见评论，发几...
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">elys，一个真人和AI同时存在的社交产品。
+
+克隆声音，选MBTI，让你回答问题了解你。
+
+产品设计有点意思，目前需要邀请码，看上架信息是个人开发者？
+
+感觉完整度还挺高。
+
+地址见评论，发几个邀请传递接龙吧。 https://t.co/RB5qJU8kn5...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-11 16:48
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021627471234519178" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 article-card">
+                    <div class="card-body">
+                        <span class="badge bg-secondary source-badge mb-2">(1) 向阳乔木 (@vista8) / X</span>
+                        <h5 class="card-title">
+                            <a href="https://twitter.com/vista8/status/2021609642837541216" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                另一个朋友公司的产品也上线了，真的大家都不过年吗？
+
+产品还不错，一键TikTok爆款仿剪Agent。
+
+这赛道应该离钱比较近。 https://t.co/BLq3H8ngcJ
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">另一个朋友公司的产品也上线了，真的大家都不过年吗？
+
+产品还不错，一键TikTok爆款仿剪Agent。
+
+这赛道应该离钱比较近。 https://t.co/BLq3H8ngcJ...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock"></i> 2026-02-11 15:37
+                            </small>
+                            <a href="https://twitter.com/vista8/status/2021609642837541216" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0 text-muted">Last updated: 2026-02-13 15:30:48</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
