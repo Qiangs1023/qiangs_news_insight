@@ -134,7 +134,6 @@ class NewsAggregator:
             logger.info(f"Generated latest markdown: {latest_md_path}")
 
             # 9. 保存到 Notion 输出数据库
-            from datetime import datetime
             date_str = datetime.now().strftime('%Y年%m月%d日')
 
             # 读取并保存 latest.md
