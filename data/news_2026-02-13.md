@@ -4,44 +4,44 @@
 
 ---
 
+## Hugging Face Daily Papers
+
+### Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation
+*Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation*
+> 📅 02月13日 17:19
+> [阅读原文](https://huggingface.co/papers/2602.12125)
+
+### Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models
+*Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models*
+> 📅 02月13日 17:19
+> [阅读原文](https://huggingface.co/papers/2602.12036)
+
+### The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies
+*The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies*
+> 📅 02月13日 17:19
+> [阅读原文](https://huggingface.co/papers/2602.09877)
+
+---
+
 ## Github Trending
 
 ### danielmiessler /Personal_AI_Infrastructure
 *danielmiessler /Personal_AI_Infrastructure*
-> 📅 02月13日 17:16
+> 📅 02月13日 17:19
 > [阅读原文](https://github.com/sponsors/danielmiessler)
 > Agentic AI Infrastructure for magnifying HUMAN capabilities....
 
 ### ChromeDevTools /chrome-devtools-mcp
 *ChromeDevTools /chrome-devtools-mcp*
-> 📅 02月13日 17:16
+> 📅 02月13日 17:19
 > [阅读原文](https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp)
 > Chrome DevTools for coding agents...
 
 ### SynkraAI /aios-core
 *SynkraAI /aios-core*
-> 📅 02月13日 17:16
+> 📅 02月13日 17:19
 > [阅读原文](https://github.com/login?return_to=%2FSynkraAI%2Faios-core)
 > Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...
-
----
-
-## Hugging Face Daily Papers
-
-### Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation
-*Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation*
-> 📅 02月13日 17:16
-> [阅读原文](https://huggingface.co/papers/2602.12125)
-
-### Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models
-*Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models*
-> 📅 02月13日 17:16
-> [阅读原文](https://huggingface.co/papers/2602.12036)
-
-### The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies
-*The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies*
-> 📅 02月13日 17:16
-> [阅读原文](https://huggingface.co/papers/2602.09877)
 
 ---
 
@@ -122,4 +122,4 @@
 
 ---
 
-*生成时间: 2026-02-13 17:17:28*
+*生成时间: 2026-02-13 17:19:36*
