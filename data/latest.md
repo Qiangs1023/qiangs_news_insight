@@ -1,6 +1,25 @@
 # 今日新闻 - 2026年02月13日
 
-总计: 6 篇
+总计: 17 篇
+
+---
+
+## Hugging Face Daily Papers
+
+### Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation
+*Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation*
+> 📅 02月13日 16:53
+> [阅读原文](https://huggingface.co/papers/2602.12125)
+
+### Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models
+*Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models*
+> 📅 02月13日 16:53
+> [阅读原文](https://huggingface.co/papers/2602.12036)
+
+### The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies
+*The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies*
+> 📅 02月13日 16:53
+> [阅读原文](https://huggingface.co/papers/2602.09877)
 
 ---
 
@@ -8,21 +27,79 @@
 
 ### danielmiessler /Personal_AI_Infrastructure
 *danielmiessler /Personal_AI_Infrastructure*
-> 📅 02月13日 16:39
+> 📅 02月13日 16:53
 > [阅读原文](https://github.com/sponsors/danielmiessler)
 > Agentic AI Infrastructure for magnifying HUMAN capabilities....
 
 ### ChromeDevTools /chrome-devtools-mcp
 *ChromeDevTools /chrome-devtools-mcp*
-> 📅 02月13日 16:39
+> 📅 02月13日 16:53
 > [阅读原文](https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp)
 > Chrome DevTools for coding agents...
 
 ### SynkraAI /aios-core
 *SynkraAI /aios-core*
-> 📅 02月13日 16:39
+> 📅 02月13日 16:53
 > [阅读原文](https://github.com/login?return_to=%2FSynkraAI%2Faios-core)
 > Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...
+
+---
+
+## techcrunch-AI
+
+### Roku to launch streaming bundles as part of its efforts to continue growing its profitability
+*Roku to launch streaming bundles as part of its efforts to continue growing its profitability*
+> 📅 02月13日 16:39
+> [阅读原文](https://techcrunch.com/2026/02/13/roku-to-launch-streaming-bundles-as-part-of-its-efforts-to-continue-growing-its-profitability/)
+> Roku delivered an impressive Q4, posting net income of $80.5 million. The company also outlined plans for streaming bundles....
+
+### A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup
+*A Stanford grad student created an algorithm to help his classmates find love; now, Date Drop is the basis of his new startup*
+> 📅 02月13日 16:24
+> [阅读原文](https://techcrunch.com/2026/02/13/a-stanford-grad-student-created-an-algorithm-to-help-his-classmates-find-love-now-date-drop-is-the-basis-of-his-new-startup/)
+> "Our matches convert to actual dates at about 10x the rate of Tinder," Weng told TechCrunch....
+
+### Elon Musk suggests spate of xAI exits have been push, not pull
+*Elon Musk suggests spate of xAI exits have been push, not pull*
+> 📅 02月13日 16:11
+> [阅读原文](https://techcrunch.com/2026/02/13/senior-engineers-including-co-founders-exit-xai-amid-controversy/)
+> At least nine engineers, including two co-founders, have announced their exits from xAI in the past week, fueling online speculation and raising questions about stability at Musk’s AI company amid mou...
+
+---
+
+## Hacker news
+
+### Open Source Is Not About You (2018)
+*Open Source Is Not About You (2018)*
+> 📅 02月13日 14:36
+> [阅读原文](https://gist.github.com/richhickey/1563cddea1002958f96e7ba9519972d9)
+> Comments...
+
+### Zed editor switching graphics lib from blade to wgpu
+*Zed editor switching graphics lib from blade to wgpu*
+> 📅 02月13日 14:03
+> [阅读原文](https://github.com/zed-industries/zed/pull/46758)
+> Comments...
+
+### Monosketch
+*Monosketch*
+> 📅 02月13日 12:18
+> [阅读原文](https://monosketch.io/)
+> Comments...
+
+---
+
+## 何夕2077 ai日报
+
+### 2026-02-13日刊
+> 📅 02月13日 11:47
+> [阅读原文](https://ai.hubtoday.app//2026-02/2026-02-13/)
+> 前往官网查看完整版 (ai.hubtoday.app)产品与功能更新小米发布开源机器人大模型，支持在消费级显卡流畅运行。MiniMax发布M2.5编程模型，专为Agent场景设计且吞吐量高。GLM-5模型发布，具备强大的长时间编程和复杂任务处理能力。高德发布机器人基座模型ABot，能听懂复杂指令并执行任务。字节跳动发布视频模型Seedance 2.0，支持音画一体生成与编辑。DeepMind发布G...
+
+### 2026-02-12日刊
+> 📅 02月12日 07:55
+> [阅读原文](https://ai.hubtoday.app//2026-02/2026-02-12/)
+> 前往官网查看完整版 (ai.hubtoday.app)产品与功能更新阿里推出机器人模型RynnBrain，性能超越谷歌Gemini。网易有道发布龙虾AI，支持跨应用自动处理工作。DeepSeek更新App，上下文扩展至一百万Token。字节发布Seedance 2.0，支持将小说直接生成视频。谷歌Gemini 3 Flash能利用代码自动处理视觉任务。前沿研究上交大研究发现AI社交欺诈风险，模型越...
 
 ---
 
@@ -45,4 +122,4 @@
 
 ---
 
-*生成时间: 2026-02-13 16:39:14*
+*生成时间: 2026-02-13 16:53:50*
