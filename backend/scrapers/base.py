@@ -67,19 +67,19 @@ class BaseScraper(ABC):
                     print(f"Failed to fetch {self.name} after {self.max_retries} attempts")
                     return []
 
-    def filter_today(self, articles: List[Article]) -> List[Article]:
+    def filter_recent(self, articles: List[Article], hours: int = 48) -> List[Article]:
         """
-        只保留今天的文章
+        只保留最近N小时内的文章
 
         Args:
             articles: 文章列表
+            hours: 小时数，默认48小时
 
         Returns:
-            只包含今天发布文章的列表
+            只包含最近发布文章的列表
         """
-        today = datetime.now().date()
-        today_start = datetime.combine(today, datetime.min.time())
-        today_end = datetime.combine(today + timedelta(days=1), datetime.min.time())
+        now = datetime.now()
+        cutoff_time = now - timedelta(hours=hours)
 
         filtered = []
         for article in articles:
@@ -88,21 +88,21 @@ class BaseScraper(ABC):
                 pub_date = article.published_at
                 if pub_date.tzinfo is not None:
                     pub_date = pub_date.replace(tzinfo=None)
-                if today_start <= pub_date < today_end:
+                if pub_date >= cutoff_time:
                     filtered.append(article)
 
         if len(articles) != len(filtered):
-            print(f"Filtered {len(articles)} -> {len(filtered)} articles (today only)")
+            print(f"Filtered {len(articles)} -> {len(filtered)} articles (last {hours} hours)")
         return filtered
 
     def scrape(self) -> List[Dict]:
         """
-        抓取并返回文章字典列表（只保留今天的内容）
+        抓取并返回文章字典列表（只保留最近48小时的内容）
 
         Returns:
             文章字典列表
         """
         articles = self.fetch_with_retry()
-        # 过滤只保留今天的文章
-        today_articles = self.filter_today(articles)
-        return [article.to_dict() for article in today_articles]
+        # 过滤只保留最近48小时的文章
+        recent_articles = self.filter_recent(articles, hours=48)
+        return [article.to_dict() for article in recent_articles]
