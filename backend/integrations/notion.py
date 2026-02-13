@@ -197,3 +197,139 @@ def update_source_fetch_time(notion_id: str):
     """更新订阅源抓取时间"""
     integration = NotionIntegration()
     integration.update_last_fetched(notion_id)
+
+
+class NotionOutputIntegration:
+    """Notion输出集成类 - 用于保存Markdown到Notion数据库"""
+
+    def __init__(self):
+        api_key = Config.NOTION_OUTPUT_API_KEY
+        database_id = Config.NOTION_OUTPUT_DATABASE_ID
+
+        if not api_key or not database_id:
+            print("Notion Output API key or Database ID not configured")
+            self.client = None
+            self.database_id = None
+        else:
+            self.client = Client(auth=api_key)
+            self.database_id = normalize_id(database_id)
+
+    def save_markdown(self, title: str, markdown_content: str, date_str: str = None) -> bool:
+        """
+        保存Markdown内容到Notion数据库
+
+        Args:
+            title: 页面标题
+            markdown_content: Markdown内容
+            date_str: 日期字符串（可选）
+
+        Returns:
+            是否成功
+        """
+        if not self.client or not self.database_id:
+            print("Notion Output not configured, skipping...")
+            return False
+
+        try:
+            # 创建页面
+            properties = {
+                "Name": {
+                    "title": [
+                        {
+                            "text": {
+                                "content": title
+                            }
+                        }
+                    ]
+                }
+            }
+
+            # 如果有日期字段，添加日期
+            if date_str:
+                try:
+                    from datetime import datetime
+                    dt = datetime.strptime(date_str, '%Y年%m月%d日')
+                    properties["日期"] = {
+                        "date": {
+                            "start": dt.strftime('%Y-%m-%d')
+                        }
+                    }
+                except:
+                    pass
+
+            # 添加内容块（Markdown内容）
+            children = []
+            # 将Markdown分割成段落（简单处理：按换行符分割）
+            lines = markdown_content.split('\n')
+            current_block = ""
+
+            for line in lines:
+                # 如果是标题行
+                if line.startswith('#'):
+                    if current_block:
+                        children.append({
+                            "object": "block",
+                            "type": "paragraph",
+                            "paragraph": {
+                                "rich_text": [{"type": "text", "text": {"content": current_block}}]
+                            }
+                        })
+                    current_block = ""
+                    level = len(line) - len(line.lstrip('#'))
+                    heading_type = f"heading_{level}" if level <= 3 else "heading_3"
+                    children.append({
+                        "object": "block",
+                        "type": heading_type,
+                        heading_type: {
+                            "rich_text": [{"type": "text", "text": {"content": line.lstrip('# ')}}]
+                        }
+                    })
+                # 如果是分隔线
+                elif line.strip() == '---':
+                    if current_block:
+                        children.append({
+                            "object": "block",
+                            "type": "paragraph",
+                            "paragraph": {
+                                "rich_text": [{"type": "text", "text": {"content": current_block}}]
+                            }
+                        })
+                        current_block = ""
+                    children.append({
+                        "object": "block",
+                        "type": "divider",
+                        "divider": {}
+                    })
+                # 普通文本
+                else:
+                    current_block += line + '\n'
+
+            # 添加最后的段落
+            if current_block.strip():
+                children.append({
+                    "object": "block",
+                    "type": "paragraph",
+                    "paragraph": {
+                        "rich_text": [{"type": "text", "text": {"content": current_block.strip()}}]
+                    }
+                })
+
+            # 创建页面
+            self.client.pages.create(
+                parent={"database_id": self.database_id},
+                properties=properties,
+                children=children
+            )
+
+            print(f"Saved markdown to Notion: {title}")
+            return True
+
+        except Exception as e:
+            print(f"Error saving to Notion: {e}")
+            return False
+
+
+def save_markdown_to_notion(title: str, markdown_content: str, date_str: str = None) -> bool:
+    """便捷函数：保存Markdown到Notion"""
+    integration = NotionOutputIntegration()
+    return integration.save_markdown(title, markdown_content, date_str)

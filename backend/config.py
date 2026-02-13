@@ -16,6 +16,10 @@ class Config:
     NOTION_API_KEY = os.getenv('NOTION_API_KEY', 'virtual_notion_api_key')
     NOTION_DATABASE_ID = os.getenv('NOTION_DATABASE_ID', 'virtual_database_id')
 
+    # Notion 输出数据库配置
+    NOTION_OUTPUT_API_KEY = os.getenv('NOTION_OUTPUT_API_KEY', '')
+    NOTION_OUTPUT_DATABASE_ID = os.getenv('NOTION_OUTPUT_DATABASE_ID', '')
+
     # Twitter API配置
     # Twitter API v2 使用 Bearer Token
     TWITTER_BEARER_TOKEN = os.getenv('TWITTER_BEARER_TOKEN', '')

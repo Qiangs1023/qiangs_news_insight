@@ -7,7 +7,7 @@ from typing import Dict, List
 
 from backend.config import Config
 from backend.database import Database
-from backend.integrations.notion import NotionIntegration
+from backend.integrations.notion import NotionIntegration, NotionOutputIntegration
 from backend.scrapers.rss import create_rss_scraper
 from backend.scrapers.twitter import create_twitter_scraper
 from backend.scrapers.youtube import create_youtube_scraper
@@ -133,7 +133,20 @@ class NewsAggregator:
             latest_md_path = generate_latest_markdown(articles_for_frontend)
             logger.info(f"Generated latest markdown: {latest_md_path}")
 
-            # 8. 打印统计
+            # 9. 保存到 Notion 输出数据库
+            from datetime import datetime
+            date_str = datetime.now().strftime('%Y年%m月%d日')
+
+            # 读取并保存 latest.md
+            try:
+                with open(latest_md_path, 'r', encoding='utf-8') as f:
+                    latest_content = f.read()
+                notion_output = NotionOutputIntegration()
+                notion_output.save_markdown(f"今日新闻 - {date_str}", latest_content, date_str)
+            except Exception as e:
+                logger.error(f"Error saving to Notion: {e}")
+
+            # 打印统计
             elapsed = (datetime.now() - start_time).total_seconds()
             logger.info(f"Task completed in {elapsed:.2f} seconds")
             logger.info(f"Statistics: {stats}")
