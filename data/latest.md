@@ -1,6 +1,6 @@
 # 今日新闻 - 2026年02月13日
 
-总计: 30 篇
+总计: 6 篇
 
 ---
 
@@ -8,338 +8,41 @@
 
 ### danielmiessler /Personal_AI_Infrastructure
 *danielmiessler /Personal_AI_Infrastructure*
-> 📅 02月13日 15:30
+> 📅 02月13日 16:39
 > [阅读原文](https://github.com/sponsors/danielmiessler)
 > Agentic AI Infrastructure for magnifying HUMAN capabilities....
 
 ### ChromeDevTools /chrome-devtools-mcp
 *ChromeDevTools /chrome-devtools-mcp*
-> 📅 02月13日 15:30
+> 📅 02月13日 16:39
 > [阅读原文](https://github.com/login?return_to=%2FChromeDevTools%2Fchrome-devtools-mcp)
 > Chrome DevTools for coding agents...
 
 ### SynkraAI /aios-core
 *SynkraAI /aios-core*
-> 📅 02月13日 15:30
+> 📅 02月13日 16:39
 > [阅读原文](https://github.com/login?return_to=%2FSynkraAI%2Faios-core)
 > Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0...
 
 ---
 
-## (1) 向阳乔木 (@vista8) / X
-
-### @shiuelu 海外用Lark，估计可以用非86
-> 📅 02月13日 14:51
-> [阅读原文](https://twitter.com/vista8/status/2022322810765656076)
-> @shiuelu 海外用Lark，估计可以用非86...
-
-### 强烈推荐安装  https://t.co/vXTdPlAISO
-> 📅 02月13日 14:46
-> [阅读原文](https://twitter.com/vista8/status/2022321370819137624)
-> 强烈推荐安装  https://t.co/vXTdPlAISO...
-
-### 这个Github 库是 X 上哪个朋友写的，太酷了！
-
-自带Gemini 和 Codex的 MCP。
-
-让Claude Code组织分工，一次性完成复杂编程，断了也能恢复（有Spec文件）。
-
-...
-> 📅 02月13日 14:45
-> [阅读原文](https://twitter.com/vista8/status/2022321310765048295)
-> 这个Github 库是 X 上哪个朋友写的，太酷了！
-
-自带Gemini 和 Codex的 MCP。
-
-让Claude Code组织分工，一次性完成复杂编程，断了也能恢复（有Spec文件）。
-
-比如让Gemini写前端，Codex修bug，充分利用模型优势。
-
-哪怕不编程，ChatGPT订阅送的Codex和谷歌的Gemini Cli都要被榨干啊。
-
-地址见评论 https://t.co/Qr9lI...
-
-### 原文 https://t.co/P32666i5jO
-> 📅 02月13日 03:52
-> [阅读原文](https://twitter.com/vista8/status/2022156963157799091)
-> 原文 https://t.co/P32666i5jO...
-
-### AI正在让未来坍缩，两个维度同时发生。
-
-第一种坍缩：横向的
-
-工程师、产品经理、市场、分析师、设计师、运营负责人……曾经泾渭分明的职业，正在快速融合成一个元能力：
-
-指挥AI Agent完成工...
-> 📅 02月13日 03:52
-> [阅读原文](https://twitter.com/vista8/status/2022156896862605483)
-> AI正在让未来坍缩，两个维度同时发生。
-
-第一种坍缩：横向的
-
-工程师、产品经理、市场、分析师、设计师、运营负责人……曾经泾渭分明的职业，正在快速融合成一个元能力：
-
-指挥AI Agent完成工作。
-
-第二种坍缩：时间的
-
-Epoch AI的数据显示，2024年4月开始，AI能力的提升速度几乎翻了一倍。...
-
-### 不用agent team，直接翻译改写的文章。
-
-Claude Opus 4.6 赢在“省心”。
-Codex 5.3 赢在“天花板”。
-
-https://t.co/zDFLtjLQEd http...
-> 📅 02月13日 03:37
-> [阅读原文](https://twitter.com/vista8/status/2022153217753448783)
-> 不用agent team，直接翻译改写的文章。
-
-Claude Opus 4.6 赢在“省心”。
-Codex 5.3 赢在“天花板”。
-
-https://t.co/zDFLtjLQEd https://t.co/7kNeTIQ9UM https://t.co/V4YBEjcuGT...
-
-### Claude Code帮搭建好，agent teams写稿，然后发布到自己的网站 https://t.co/RHKyaB0yWb
-> 📅 02月13日 03:34
-> [阅读原文](https://twitter.com/vista8/status/2022152497775931643)
-> Claude Code帮搭建好，agent teams写稿，然后发布到自己的网站 https://t.co/RHKyaB0yWb...
-
-### 谷歌这动作也太慢了，现在才有专用的Vision Pro专用的YouTube版本。 https://t.co/BgEK6UEGIH
-> 📅 02月13日 03:31
-> [阅读原文](https://twitter.com/vista8/status/2022151571220664539)
-> 谷歌这动作也太慢了，现在才有专用的Vision Pro专用的YouTube版本。 https://t.co/BgEK6UEGIH...
-
-### Slack前CEO说过一句话特别到位："创新的唯一真实衡量标准，是人的行为是否改变了。"
-
-左：把AI工具塞进旧业务模式
-右：以AI为基础重新设计业务
-
-"如果用AI重新设计一个XX公司，AI做...
-> 📅 02月13日 03:21
-> [阅读原文](https://twitter.com/vista8/status/2022149139816169912)
-> Slack前CEO说过一句话特别到位："创新的唯一真实衡量标准，是人的行为是否改变了。"
-
-左：把AI工具塞进旧业务模式
-右：以AI为基础重新设计业务
-
-"如果用AI重新设计一个XX公司，AI做它擅长的，人做人擅长的，分别是什么？" https://t.co/bTwaKwidam...
-
-### @Jason_Young1231 怪不得，解惑了。
-> 📅 02月12日 14:42
-> [阅读原文](https://twitter.com/vista8/status/2021958043811070407)
-> @Jason_Young1231 怪不得，解惑了。...
-
-### 只要敢提要求，Claude Code就敢出方案干。
-
-且比我设想的方案还要好很多。
-
-自己SSH到服务器，查询已经有的网站配置。
-
-建议不用Hexo，转用Hugo+PaperMod，说内置SEO...
-> 📅 02月12日 14:32
-> [阅读原文](https://twitter.com/vista8/status/2021955486791372983)
-> 只要敢提要求，Claude Code就敢出方案干。
-
-且比我设想的方案还要好很多。
-
-自己SSH到服务器，查询已经有的网站配置。
-
-建议不用Hexo，转用Hugo+PaperMod，说内置SEO功能，Cli支持的也更好。
-
-另外，还说干这件事符合我的TELOS准则。 https://t.co/nl2z4da9vT...
-
-### Lex Fridman访谈OpenClaw作者了，先Mark后看。
-
-https://t.co/kPVVZbyvfd
-> 📅 02月12日 14:14
-> [阅读原文](https://twitter.com/vista8/status/2021950980871663934)
-> Lex Fridman访谈OpenClaw作者了，先Mark后看。
-
-https://t.co/kPVVZbyvfd...
-
-### @firstnamewdyc 哎，也是。
-> 📅 02月12日 14:05
-> [阅读原文](https://twitter.com/vista8/status/2021948868297208282)
-> @firstnamewdyc 哎，也是。...
-
-### 很早前也说过，一定要学会保护自己的注意力。
-
-这是最宝贵的，AI时代来了，全部应验。
-> 📅 02月12日 14:02
-> [阅读原文](https://twitter.com/vista8/status/2021947928584368362)
-> 很早前也说过，一定要学会保护自己的注意力。
-
-这是最宝贵的，AI时代来了，全部应验。...
-
-### 群里在聊李笑来，我觉得笑来老师真是活在未来的人。
-
-很早受他影响，把拼音输入换成了双拼（未来可能是语音）
-
-还参加过他组织的写作打卡训练营、YC视频课训练营。
-
-十多年前他就告诉大家定投比特币，...
-> 📅 02月12日 13:59
-> [阅读原文](https://twitter.com/vista8/status/2021947286088298918)
-> 群里在聊李笑来，我觉得笑来老师真是活在未来的人。
-
-很早受他影响，把拼音输入换成了双拼（未来可能是语音）
-
-还参加过他组织的写作打卡训练营、YC视频课训练营。
-
-十多年前他就告诉大家定投比特币，多读论文，多学英语，多学编程。
-
-跟进任何一条，都会有不小的收获，感恩的❤...
-
-### 以前从没发生过，感觉 Opus 在进化。
-
-它会知道调用Agent执行效率更高。 https://t.co/TLzmdJUikr
-> 📅 02月12日 13:52
-> [阅读原文](https://twitter.com/vista8/status/2021945535339672004)
-> 以前从没发生过，感觉 Opus 在进化。
-
-它会知道调用Agent执行效率更高。 https://t.co/TLzmdJUikr...
-
-### 原文地址 https://t.co/Zqh3GCJfPn
-> 📅 02月12日 12:41
-> [阅读原文](https://twitter.com/vista8/status/2021927668221194274)
-> 原文地址 https://t.co/Zqh3GCJfPn...
-
-### 最近经常听到AI杀死了SaaS。
-
-读到篇文章，说的比较中肯，AI翻译部分，原地址见评论。
-
-AI 和 vibe coding 为什么会动摇SaaS？
-
-SaaS 一直被认为是地球上最赚钱的商业...
-> 📅 02月12日 12:39
-> [阅读原文](https://twitter.com/vista8/status/2021927043236343936)
-> 最近经常听到AI杀死了SaaS。
-
-读到篇文章，说的比较中肯，AI翻译部分，原地址见评论。
-
-AI 和 vibe coding 为什么会动摇SaaS？
-
-SaaS 一直被认为是地球上最赚钱的商业模式之一。
-
-原因很简单，开发一次，卖无数次，边际成本几乎为零。
-
-现在有了Vibe Coding，客户发现，自己好像也能"做"软件了。...
-
-### 原文地址 https://t.co/kp5X4LX06j
-> 📅 02月12日 09:55
-> [阅读原文](https://twitter.com/vista8/status/2021885740578484463)
-> 原文地址 https://t.co/kp5X4LX06j...
-
-### 读到篇文章，角度很有意思，给Apple出主意啊，哈哈哈
-
-OpenClaw 才是 Apple Intelligence该有的样子！
-
-最近Mac Mini出现了一个很有意思的现象：到处卖断货。
-...
-> 📅 02月12日 09:54
-> [阅读原文](https://twitter.com/vista8/status/2021885631639761373)
-> 读到篇文章，角度很有意思，给Apple出主意啊，哈哈哈
-
-OpenClaw 才是 Apple Intelligence该有的样子！
-
-最近Mac Mini出现了一个很有意思的现象：到处卖断货。
-
-但不是因为大家突然需要一台小方盒子当咖啡桌摆件。
-
-你去Reddit或者Hacker News逛一圈就会发现，大量用户买Mac Mini的理由只有一个：跑AI...
-
-### 朋友觉得：AI取代可能不止部分脑力劳动者，“体力劳动”者可能也会很惨。
-
-AI取代“体力劳动者”，不是替代他们干活，而是活儿直接没了。
-
-甚至都不用等机器人技术成熟。
-
-比如文生视频成熟之后，大...
-> 📅 02月12日 09:31
-> [阅读原文](https://twitter.com/vista8/status/2021879840220328420)
-> 朋友觉得：AI取代可能不止部分脑力劳动者，“体力劳动”者可能也会很惨。
-
-AI取代“体力劳动者”，不是替代他们干活，而是活儿直接没了。
-
-甚至都不用等机器人技术成熟。
-
-比如文生视频成熟之后，大量摄影师、演员、化妆师、摄影棚的保安、保洁都不需要了...
-
-先干掉几百万个岗位。...
-
-### @yangqing_66 嗨，我不专业，我喜欢看@karminski3 牙医的硬核评测。
-> 📅 02月12日 08:25
-> [阅读原文](https://twitter.com/vista8/status/2021863227223867743)
-> @yangqing_66 嗨，我不专业，我喜欢看@karminski3 牙医的硬核评测。...
-
-### 感觉现在已经不知道怎么评测大模型了。
-
-专业有专业的评测数据集，普通人用大模型普遍用的很浅。
-
-挖空心思找到相对实用场景的 aha-moment太难了。
-
-大家拿到新模型一般会怎么测啊？
-> 📅 02月12日 08:01
-> [阅读原文](https://twitter.com/vista8/status/2021857087626916101)
-> 感觉现在已经不知道怎么评测大模型了。
-
-专业有专业的评测数据集，普通人用大模型普遍用的很浅。
-
-挖空心思找到相对实用场景的 aha-moment太难了。
-
-大家拿到新模型一般会怎么测啊？...
-
-### 已经有一个多月没有钓鱼了！
-
-除了天气原因，都是因为AI技术发展太快，没时间娱乐了。😂
-> 📅 02月11日 23:59
-> [阅读原文](https://twitter.com/vista8/status/2021735804276719863)
-> 已经有一个多月没有钓鱼了！
-
-除了天气原因，都是因为AI技术发展太快，没时间娱乐了。😂...
-
-### 下载地址：https://t.co/jQMLZ78T7N  
-邀请码：521NHO
-> 📅 02月11日 16:49
-> [阅读原文](https://twitter.com/vista8/status/2021627716659994747)
-> 下载地址：https://t.co/jQMLZ78T7N  
-邀请码：521NHO...
-
-### elys，一个真人和AI同时存在的社交产品。
-
-克隆声音，选MBTI，让你回答问题了解你。
-
-产品设计有点意思，目前需要邀请码，看上架信息是个人开发者？
-
-感觉完整度还挺高。
-
-地址见评论，发几...
-> 📅 02月11日 16:48
-> [阅读原文](https://twitter.com/vista8/status/2021627471234519178)
-> elys，一个真人和AI同时存在的社交产品。
-
-克隆声音，选MBTI，让你回答问题了解你。
-
-产品设计有点意思，目前需要邀请码，看上架信息是个人开发者？
-
-感觉完整度还挺高。
-
-地址见评论，发几个邀请传递接龙吧。 https://t.co/RB5qJU8kn5...
-
-### 另一个朋友公司的产品也上线了，真的大家都不过年吗？
-
-产品还不错，一键TikTok爆款仿剪Agent。
-
-这赛道应该离钱比较近。 https://t.co/BLq3H8ngcJ
-> 📅 02月11日 15:37
-> [阅读原文](https://twitter.com/vista8/status/2021609642837541216)
-> 另一个朋友公司的产品也上线了，真的大家都不过年吗？
-
-产品还不错，一键TikTok爆款仿剪Agent。
-
-这赛道应该离钱比较近。 https://t.co/BLq3H8ngcJ...
+## AI前线
+
+### Meta、OpenAI 争抢收购 OpenClaw！创始人艰难抉择：月入不到2万刀赔钱养项目，Offer拿到手软，对几十亿融资没兴趣
+> 📅 02月13日 08:07
+> [阅读原文](https://mp.weixin.qq.com/s?__biz=MzU1NDA4NjU2MA==&mid=2247656347&idx=1&sn=eeea690b672fda27d22ac74faada0dde)
+> 原创 褚杏娟、冬梅 2026-02-13 16:07 北京 “AI会取代程序员，虽然惋惜，但是必然” 整理 | 褚杏娟、冬梅 近日，OpenClaw 创始人 Peter Steinberger 参加访谈，分享了自己和项目一夜成名后的经历。他回忆了那段不仅被 Anthropic 追着要求改名，还遭遇加密社区的恶意骚扰、账号抢注与恶意软件散布的经历，直言他精神几近崩溃甚至想放弃项目。最终通过精密的 “...
+
+### 模力工场 032 AI 应用榜：桌面 Agent 强势来袭，阶跃登顶本周榜首
+> 📅 02月13日 08:07
+> [阅读原文](https://mp.weixin.qq.com/s?__biz=MzU1NDA4NjU2MA==&mid=2247656347&idx=2&sn=eea57ad1883d3bac18a51d3992ac5345)
+> 2026-02-13 16:07 北京 模力工场 032 AI 应用榜来啦！ 作者 | Ivy 模力工场新鲜事模力工场 邀你用 AI 一键生成新年财运红包封面！2 月 5 日至 25 日，设计松鼠 × 模力创意红包，即可赢金币参与多轮现金抽奖。扫码进群，马上开启你的开年好运！032 周上榜应用精选（附用户热评）模力工场 32 周 AI 应用周榜来啦～本周共有 25 款应用上架新榜，所有排名均来自用...
+
+### 编程超越 Gemini 3 Pro？GLM-5 性能实测对齐 Opus 4.6，智谱市值突破1700亿港元
+> 📅 02月12日 04:58
+> [阅读原文](https://mp.weixin.qq.com/s?__biz=MzU1NDA4NjU2MA==&mid=2247656097&idx=1&sn=0938adea8d90faafd7adac36311c6f3e)
+> 华卫 2026-02-12 12:58 辽宁 实力强到被错认成DeepSeek-V4？ 整理 | 华卫 临近春节，智谱 AI 发布了其最新旗舰大模型 GLM-5。自 1 月初在香港进行备受关注的 IPO 之后，这是该公司推出的首款重磅大模型。据称，GLM-5 标志着人工智能开发从“Vibe Coding”变革为“Agentic Engineering”，即更大规模的 AI 自动化编程，其代码能力实...
 
 ---
 
-*生成时间: 2026-02-13 15:30:48*
+*生成时间: 2026-02-13 16:39:14*
