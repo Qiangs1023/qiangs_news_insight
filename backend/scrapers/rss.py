@@ -2,6 +2,8 @@
 RSS抓取模块
 """
 import feedparser
+import time
+import random
 from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
@@ -12,6 +14,10 @@ feedparser.USER_AGENT = "NewsAggregator/1.0 (+https://github.com/Qiangs1023/qian
 
 class RSSScraper(BaseScraper):
     """RSS抓取器"""
+
+    # 反反爬虫设置
+    MIN_DELAY = 0.5
+    MAX_DELAY = 1.5
 
     def __init__(self, name: str, url: str, config: Dict = None):
         super().__init__(name, url, config)
@@ -25,6 +31,9 @@ class RSSScraper(BaseScraper):
             文章列表
         """
         print(f"Fetching RSS from {self.name}: {self.url}")
+
+        # 请求前等待
+        self._wait_before_request()
 
         # 解析RSS
         feed = feedparser.parse(self.url)

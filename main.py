@@ -15,7 +15,7 @@ from backend.scrapers.blog import create_blog_scraper
 from backend.processors.dedup import deduplicate_articles
 from backend.processors.translator import create_translator, translate_articles
 from backend.generators.static import generate_static_pages
-from backend.generators.markdown import generate_daily_markdown, generate_latest_markdown
+from backend.generators.markdown import generate_daily_markdown, generate_latest_markdown, cleanup_old_markdown_files
 from backend.utils.logger import logger
 
 
@@ -132,6 +132,9 @@ class NewsAggregator:
 
             latest_md_path = generate_latest_markdown(articles_for_frontend)
             logger.info(f"Generated latest markdown: {latest_md_path}")
+
+            # 清理旧文件（保留最近30天）
+            cleanup_old_markdown_files(days=30)
 
             # 9. 保存到 Notion 输出数据库
             date_str = datetime.now().strftime('%Y年%m月%d日')

@@ -7,19 +7,21 @@ from typing import List, Dict
 from datetime import datetime
 from .base import BaseScraper, Article
 from backend.config import Config
-
-# 自定义 User-Agent
-DEFAULT_HEADERS = {
-    'User-Agent': 'NewsAggregator/1.0 (+https://github.com/Qiangs1023/qiangs_news_insight)'
-}
+from backend.utils.anti_bot import AntiBotMixin
 
 
-class BlogScraper(BaseScraper):
+class BlogScraper(BaseScraper, AntiBotMixin):
     """博客抓取器"""
 
+    # 反反爬虫设置
+    MIN_DELAY = 2.0  # 最小延迟（秒）
+    MAX_DELAY = 5.0  # 最大延迟（秒）
+
     def __init__(self, name: str, url: str, config: Dict = None):
-        super().__init__(name, url, config)
+        BaseScraper.__init__(self, name, url, config)
+        AntiBotMixin.__init__(self)
         self.max_articles = config.get('max_articles', 20) if config else 20
+        self.session = requests.Session()
 
     def fetch(self) -> List[Article]:
         """
@@ -31,9 +33,12 @@ class BlogScraper(BaseScraper):
         print(f"Fetching Blog from {self.name}: {self.url}")
 
         try:
-            # 获取页面内容
-            response = requests.get(self.url, headers=DEFAULT_HEADERS, timeout=Config.REQUEST_TIMEOUT)
-            response.raise_for_status()
+            # 使用安全的请求方法
+            response = self.safe_request(self.url, session=self.session, timeout=Config.REQUEST_TIMEOUT)
+
+            if not response or response.status_code != 200:
+                print(f"Failed to fetch blog {self.name}")
+                return []
 
             soup = BeautifulSoup(response.content, 'html.parser')
 

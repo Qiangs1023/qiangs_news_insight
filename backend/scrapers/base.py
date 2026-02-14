@@ -5,6 +5,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict
 from datetime import datetime, timedelta
 import time
+import random
 
 
 class Article:
@@ -32,12 +33,29 @@ class Article:
 class BaseScraper(ABC):
     """抓取器基类"""
 
+    # 反反爬虫设置（子类可覆盖）
+    MIN_DELAY = 1.0
+    MAX_DELAY = 3.0
+
     def __init__(self, name: str, url: str, config: Dict = None):
         self.name = name
         self.url = url
         self.config = config or {}
         self.max_retries = 3
         self.retry_delay = 2
+        self._last_request_time: float = 0
+
+    def _get_random_delay(self) -> float:
+        """获取随机延迟"""
+        return random.uniform(self.MIN_DELAY, self.MAX_DELAY)
+
+    def _wait_before_request(self):
+        """请求前等待"""
+        elapsed = time.time() - self._last_request_time
+        delay = self._get_random_delay()
+        if elapsed < delay:
+            time.sleep(delay - elapsed)
+        self._last_request_time = time.time()
 
     @abstractmethod
     def fetch(self) -> List[Article]:
