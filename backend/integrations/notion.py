@@ -231,7 +231,17 @@ class NotionOutputIntegration:
             return False
 
         try:
-            # 创建页面
+            # 解析日期
+            parsed_date = None
+            if date_str:
+                try:
+                    from datetime import datetime
+                    dt = datetime.strptime(date_str, '%Y年%m月%d日')
+                    parsed_date = dt.strftime('%Y-%m-%d')
+                except:
+                    pass
+
+            # 创建页面（匹配 Notion 数据库属性：name, source, date, published）
             properties = {
                 "Name": {
                     "title": [
@@ -241,21 +251,21 @@ class NotionOutputIntegration:
                             }
                         }
                     ]
+                },
+                "source": {
+                    "select": {
+                        "name": "github_qiangs_news"
+                    }
+                },
+                "date": {
+                    "date": {
+                        "start": parsed_date or datetime.now().strftime('%Y-%m-%d')
+                    }
+                },
+                "published": {
+                    "checkbox": False
                 }
             }
-
-            # 如果有日期字段，添加日期
-            if date_str:
-                try:
-                    from datetime import datetime
-                    dt = datetime.strptime(date_str, '%Y年%m月%d日')
-                    properties["日期"] = {
-                        "date": {
-                            "start": dt.strftime('%Y-%m-%d')
-                        }
-                    }
-                except:
-                    pass
 
             # 添加内容块（Markdown内容）
             children = []
