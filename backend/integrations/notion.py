@@ -243,7 +243,7 @@ class NotionOutputIntegration:
 
             # 创建页面（匹配 Notion 数据库属性：name, source, date, published）
             properties = {
-                "Name": {
+                "name": {
                     "title": [
                         {
                             "text": {
@@ -253,9 +253,13 @@ class NotionOutputIntegration:
                     ]
                 },
                 "source": {
-                    "select": {
-                        "name": "github_qiangs_news"
-                    }
+                    "rich_text": [
+                        {
+                            "text": {
+                                "content": "github_qiangs_news"
+                            }
+                        }
+                    ]
                 },
                 "date": {
                     "date": {
