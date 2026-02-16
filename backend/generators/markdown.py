@@ -6,7 +6,81 @@ from typing import List, Dict
 from pathlib import Path
 import glob
 import os
+import re
 from backend.config import Config
+
+
+def _fix_github_url(url: str, description: str = '') -> str:
+    """
+    修复GitHub Trending返回的错误链接
+
+    GitHub Trending的RSS可能返回登录页面或赞助页面链接，
+    需要从描述中提取正确的仓库链接
+
+    Args:
+        url: 原始URL
+        description: 文章描述，可能包含正确的链接
+
+    Returns:
+        修复后的正确URL
+    """
+    # 如果URL为空，返回空字符串
+    if not url:
+        return ''
+
+    # 如果URL已经是正确的GitHub仓库链接，直接返回
+    if re.match(r'^https://github\.com/[^/]+/[^/]+/?$', url):
+        return url
+
+    # 如果是登录页面或赞助页面，尝试从描述中提取
+    if '/login?' in url or '/sponsors' in url or '/account' in url:
+        # 尝试从描述中提取正确的GitHub仓库链接
+        if description:
+            # 匹配 GitHub 仓库链接模式
+            match = re.search(r'https://github\.com/[^/]+/[^/]+', description)
+            if match:
+                return match.group(0).rstrip('/')
+
+    # 如果URL包含return_to参数，从中提取
+    if 'return_to=' in url:
+        match = re.search(r'return_to=%2F([^%]+)%2F([^%]+)', url)
+        if match:
+            owner = match.group(1)
+            repo = match.group(2)
+            return f"https://github.com/{owner}/{repo}"
+
+    # 返回原始URL
+    return url
+
+
+def _normalize_url(url: str, base_url: str = '') -> str:
+    """
+    标准化URL，确保是可点击的绝对链接
+
+    Args:
+        url: 原始URL
+        base_url: 基础URL（用于处理相对路径）
+
+    Returns:
+        标准化后的URL
+    """
+    if not url:
+        return ''
+
+    url = url.strip()
+
+    # 如果是绝对URL，直接返回
+    if url.startswith('http://') or url.startswith('https://'):
+        return url
+
+    # 如果是相对URL，尝试基于base_url构建绝对URL
+    if url.startswith('/') and base_url:
+        from urllib.parse import urlparse
+        parsed = urlparse(base_url)
+        return f"{parsed.scheme}://{parsed.netloc}{url}"
+
+    # 其他情况返回原始URL
+    return url
 
 
 def generate_markdown(articles: List[Dict], output_path: str = None) -> str:
@@ -51,6 +125,7 @@ def generate_markdown(articles: List[Dict], output_path: str = None) -> str:
         for article in source_articles:
             title = article.get('title', '无标题')
             url = article.get('url', '')
+            source_url = article.get('source_url', '')  # 用于处理相对路径
             published_at = article.get('published_at', '')
             translated_title = article.get('translated_title')
             description = article.get('description', '') or article.get('content', '')[:200]
@@ -76,7 +151,12 @@ def generate_markdown(articles: List[Dict], output_path: str = None) -> str:
                 lines.append(f"> 📅 {date_str}")
 
             if url:
-                lines.append(f"> [阅读原文]({url})")
+                # 先修复GitHub Trending的登录页面链接
+                fixed_url = _fix_github_url(url, description)
+                # 再标准化所有URL
+                normalized_url = _normalize_url(fixed_url, source_url)
+                if normalized_url:
+                    lines.append(f"> [阅读原文]({normalized_url})")
 
             if description:
                 lines.append(f"> {description}...")
