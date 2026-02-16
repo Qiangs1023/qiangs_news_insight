@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字旷野 每日新闻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text: #e0e0e0;
+            --text-secondary: #888;
+            --border: #2a2a2a;
+            --accent: #3b82f6;
+            --summary-bg: #252525;
+        }
+
+        [data-theme="light"] {
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #666;
+            --border: #e5e5e5;
+            --accent: #2563eb;
+            --summary-bg: #f0f0f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stats {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text);
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--border);
+        }
+
+        /* Search */
+        .search-box {
+            margin-bottom: 24px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Source Section */
+        .source-section {
+            margin-bottom: 32px;
+        }
+
+        .source-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .source-name {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .source-count {
+            font-size: 0.6875rem;
+            color: var(--text-secondary);
+            background: var(--border);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .collapse-icon {
+            font-size: 0.625rem;
+            color: var(--text-secondary);
+            transition: transform 0.2s;
+        }
+
+        .source-header.collapsed .collapse-icon {
+            transform: rotate(-90deg);
+        }
+
+        /* Articles Grid */
+        .articles {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .articles.collapsed {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .articles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Article Card */
+        .article {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: var(--border);
+        }
+
+        .article-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .article:hover .article-media img {
+            transform: scale(1.02);
+        }
+
+        .video-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .video-indicator::after {
+            content: '';
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 3px;
+        }
+
+        .article-body {
+            padding: 16px;
+        }
+
+        .article-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .article-title:hover {
+            color: var(--accent);
+        }
+
+        .article-summary {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 10px 12px;
+            background: var(--summary-bg);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .article-time {
+            white-space: nowrap;
+        }
+
+        .article-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .article-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 48px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="logo">每日新闻</a>
+            <div class="header-right">
+                <span class="stats" id="stats"></span>
+                <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
+            </div>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索新闻...">
+        </div>
+
+        <main id="content">
+            <div class="loading">加载中...</div>
+        </main>
+
+        <footer>
+            <span id="updateTime"></span>
+        </footer>
+    </div>
+
+    <script>
+        // Theme
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+            themeToggle.textContent = isLight ? '🌙' : '☀️';
+            localStorage.setItem('theme', isLight ? 'dark' : 'light');
+        });
+
+        // Data
+        let allArticles = [];
+
+        async function loadArticles() {
+            try {
+                const res = await fetch('data/articles.json');
+                const data = await res.json();
+                allArticles = data.articles || [];
+                
+                document.getElementById('stats').textContent = `${allArticles.length} 篇`;
+                document.getElementById('updateTime').textContent = 
+                    `更新于 ${new Date(data.updated_at).toLocaleString('zh-CN')}`;
+                
+                groupAndRender(allArticles);
+            } catch (e) {
+                document.getElementById('content').innerHTML = 
+                    '<div class="empty-state">暂无新闻</div>';
+            }
+        }
+
+        function groupAndRender(articles) {
+            const grouped = {};
+            articles.forEach(a => {
+                const source = a.source_name || '其他';
+                if (!grouped[source]) grouped[source] = [];
+                grouped[source].push(a);
+            });
+
+            const content = document.getElementById('content');
+            if (Object.keys(grouped).length === 0) {
+                content.innerHTML = '<div class="empty-state">没有找到相关新闻</div>';
+                return;
+            }
+
+            let html = '';
+            Object.entries(grouped).forEach(([source, items]) => {
+                html += `
+                    <section class="source-section">
+                        <div class="source-header" onclick="toggleSource(this)">
+                            <span class="collapse-icon">▼</span>
+                            <span class="source-name">${escapeHtml(source)}</span>
+                            <span class="source-count">${items.length}</span>
+                        </div>
+                        <div class="articles">
+                            ${items.map(a => renderArticle(a)).join('')}
+                        </div>
+                    </section>
+                `;
+            });
+            content.innerHTML = html;
+        }
+
+        function renderArticle(a) {
+            const title = a.translated_title || a.title || '无标题';
+            const url = a.url || '#';
+            const time = a.published_at ? formatDate(a.published_at) : '';
+            const summary = a.summary || '';
+            const image = a.image_url || a.video_thumbnail || '';
+            const isVideo = a.media_type === 'video' || a.video_thumbnail;
+            const isTwitter = a.source_type === 'twitter' || (url && (url.includes('twitter.com') || url.includes('x.com')));
+
+            let mediaHtml = '';
+            if (image) {
+                if (isTwitter && isVideo) {
+                    mediaHtml = `
+                        <a href="${escapeHtml(url)}" target="_blank" rel="noopener">
+                            <div class="article-media">
+                                <img src="${escapeHtml(image)}" alt="" loading="lazy">
+                                <div class="video-indicator"></div>
+                            </div>
+                        </a>
+                    `;
+                } else {
+                    mediaHtml = `
+                        <div class="article-media">
+                            <img src="${escapeHtml(image)}" alt="" loading="lazy">
+                            ${isVideo ? '<div class="video-indicator"></div>' : ''}
+                        </div>
+                    `;
+                }
+            }
+
+            let summaryHtml = '';
+            if (summary) {
+                summaryHtml = `<div class="article-summary">${escapeHtml(summary)}</div>`;
+            }
+
+            return `
+                <article class="article">
+                    ${mediaHtml}
+                    <div class="article-body">
+                        <a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="article-title">
+                            ${escapeHtml(title)}
+                        </a>
+                        ${summaryHtml}
+                        <div class="article-meta">
+                            ${time ? `<span class="article-time">${time}</span>` : '<span></span>'}
+                            <a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="article-link">
+                                原文 →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function formatDate(dateStr) {
+            try {
+                const d = new Date(dateStr);
+                const now = new Date();
+                const diff = now - d;
+                const hours = Math.floor(diff / 3600000);
+                
+                if (hours < 1) return '刚刚';
+                if (hours < 24) return `${hours}小时前`;
+                
+                const month = d.getMonth() + 1;
+                const day = d.getDate();
+                return `${month}月${day}日`;
+            } catch (e) {
+                return '';
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function toggleSource(el) {
+            el.classList.toggle('collapsed');
+            el.nextElementSibling.classList.toggle('collapsed');
+        }
+
+        // Search
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout = null;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const q = e.target.value.trim().toLowerCase();
+                if (!q) {
+                    groupAndRender(allArticles);
+                    return;
+                }
+                const filtered = allArticles.filter(a => 
+                    (a.title && a.title.toLowerCase().includes(q)) ||
+                    (a.translated_title && a.translated_title.toLowerCase().includes(q)) ||
+                    (a.content && a.content.toLowerCase().includes(q)) ||
+                    (a.summary && a.summary.toLowerCase().includes(q))
+                );
+                groupAndRender(filtered);
+            }, 200);
+        });
+
+        // Init
+        loadArticles();
+    </script>
+</body>
+</html>

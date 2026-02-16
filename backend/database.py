@@ -65,6 +65,14 @@ class Database:
                     url TEXT UNIQUE NOT NULL,
                     published_at TIMESTAMP,
                     translated_title TEXT,
+                    translated_content TEXT,
+                    summary TEXT,
+                    image_url TEXT,
+                    video_thumbnail TEXT,
+                    media_type TEXT,
+                    author TEXT,
+                    author_name TEXT,
+                    author_avatar TEXT,
                     is_translated BOOLEAN DEFAULT 0,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY (source_id) REFERENCES sources(id)
@@ -95,6 +103,27 @@ class Database:
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at DESC)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_source_id ON articles(source_id)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_sources_notion_id ON sources(notion_id)')
+
+            # 添加新列（如果不存在）
+            self._add_column_if_not_exists(cursor, 'articles', 'translated_content', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'summary', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'image_url', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'video_thumbnail', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'media_type', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'author', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'author_name', 'TEXT')
+            self._add_column_if_not_exists(cursor, 'articles', 'author_avatar', 'TEXT')
+
+    def _add_column_if_not_exists(self, cursor, table: str, column: str, column_type: str):
+        """添加列（如果不存在）"""
+        cursor.execute(f"PRAGMA table_info({table})")
+        columns = [row[1] for row in cursor.fetchall()]
+        if column not in columns:
+            try:
+                cursor.execute(f'ALTER TABLE {table} ADD COLUMN {column} {column_type}')
+                logger.info(f"Added column {column} to {table}")
+            except Exception as e:
+                logger.debug(f"Column {column} may already exist: {e}")
 
     def upsert_source(self, notion_id: str, source_type: str, name: str, feed_url: str = None,
                       url: str = None, limit: int = 0, deep_read: bool = False,
@@ -143,20 +172,52 @@ class Database:
             return [dict(row) for row in cursor.fetchall()]
 
     def upsert_article(self, source_id: int, title: str, url: str, content: str = None,
-                       published_at: datetime = None) -> Optional[int]:
+                       published_at: datetime = None, summary: str = None,
+                       translated_content: str = None, translated_title: str = None,
+                       image_url: str = None, video_thumbnail: str = None,
+                       media_type: str = None, author: str = None,
+                       author_name: str = None, author_avatar: str = None) -> Optional[int]:
         """插入或更新文章"""
         with self.get_connection() as conn:
             cursor = conn.cursor()
             published_at_str = published_at.isoformat() if published_at else None
             try:
                 cursor.execute('''
-                    INSERT INTO articles (source_id, title, url, content, published_at)
-                    VALUES (?, ?, ?, ?, ?)
-                ''', (source_id, title, url, content, published_at_str))
+                    INSERT INTO articles (
+                        source_id, title, url, content, published_at, 
+                        summary, translated_content, translated_title,
+                        image_url, video_thumbnail, media_type,
+                        author, author_name, author_avatar
+                    )
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ''', (
+                    source_id, title, url, content, published_at_str,
+                    summary, translated_content, translated_title,
+                    image_url, video_thumbnail, media_type,
+                    author, author_name, author_avatar
+                ))
                 return cursor.lastrowid
             except sqlite3.IntegrityError:
-                # URL已存在，跳过
-                logger.debug(f"Article already exists (URL duplicate): {url}")
+                # URL已存在，更新内容
+                logger.debug(f"Article already exists, updating: {url}")
+                cursor.execute('''
+                    UPDATE articles SET
+                        content = COALESCE(?, content),
+                        summary = COALESCE(?, summary),
+                        translated_content = COALESCE(?, translated_content),
+                        translated_title = COALESCE(?, translated_title),
+                        image_url = COALESCE(?, image_url),
+                        video_thumbnail = COALESCE(?, video_thumbnail),
+                        media_type = COALESCE(?, media_type),
+                        author = COALESCE(?, author),
+                        author_name = COALESCE(?, author_name),
+                        author_avatar = COALESCE(?, author_avatar)
+                    WHERE url = ?
+                ''', (
+                    content, summary, translated_content, translated_title,
+                    image_url, video_thumbnail, media_type,
+                    author, author_name, author_avatar, url
+                ))
                 return None
 
     def update_article_translation(self, article_id: int, translated_title: str):

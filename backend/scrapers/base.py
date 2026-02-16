@@ -12,12 +12,21 @@ class Article:
     """文章数据模型"""
 
     def __init__(self, title: str, url: str, content: str = None,
-                 published_at: datetime = None, author: str = None):
+                 published_at: datetime = None, author: str = None,
+                 author_name: str = None, author_avatar: str = None,
+                 image_url: str = None, video_thumbnail: str = None,
+                 media_type: str = None, media_urls: List[str] = None):
         self.title = title
         self.url = url
         self.content = content or ''
         self.published_at = published_at or datetime.now()
-        self.author = author
+        self.author = author  # 用户名 @username
+        self.author_name = author_name  # 显示名称
+        self.author_avatar = author_avatar  # 头像URL
+        self.image_url = image_url  # 主图片/视频封面
+        self.video_thumbnail = video_thumbnail  # 视频缩略图
+        self.media_type = media_type  # photo, video, animated_gif
+        self.media_urls = media_urls or []  # 所有媒体URL列表
 
     def to_dict(self) -> Dict:
         """转换为字典"""
@@ -26,7 +35,13 @@ class Article:
             'url': self.url,
             'content': self.content,
             'published_at': self.published_at,
-            'author': self.author
+            'author': self.author,
+            'author_name': self.author_name,
+            'author_avatar': self.author_avatar,
+            'image_url': self.image_url,
+            'video_thumbnail': self.video_thumbnail,
+            'media_type': self.media_type,
+            'media_urls': self.media_urls
         }
 
 

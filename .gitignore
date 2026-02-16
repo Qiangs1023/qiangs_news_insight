@@ -6,7 +6,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -50,5 +49,5 @@ Thumbs.db
 # Node
 node_modules/
 
-# Frontend dist
-frontend/dist/
+# Frontend dist data (generated)
+frontend/dist/data/

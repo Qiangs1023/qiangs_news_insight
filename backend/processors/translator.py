@@ -1,8 +1,8 @@
 """
-翻译模块 - 支持多种翻译模型
+翻译模块 - 支持多种翻译模型和内容总结
 """
 import requests
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from abc import ABC, abstractmethod
 from backend.config import Config
 
@@ -29,6 +29,21 @@ class Translator(ABC):
         """
         pass
 
+    def summarize_and_translate(self, text: str, target_lang: str = None) -> Dict[str, str]:
+        """
+        总结并翻译内容（子类可覆盖）
+
+        Args:
+            text: 待处理的文本
+            target_lang: 目标语言
+
+        Returns:
+            {'summary': 总结内容, 'translated': 翻译内容}
+        """
+        # 默认实现：只翻译不总结
+        translated = self.translate(text, target_lang)
+        return {'summary': '', 'translated': translated}
+
     def translate_article_title(self, article: Dict, target_lang: str = None) -> str:
         """
         翻译文章标题
@@ -51,9 +66,37 @@ class Translator(ABC):
         translated = self.translate(title, target_lang)
         return translated if translated else title
 
+    def process_article(self, article: Dict, target_lang: str = None) -> Dict:
+        """
+        处理文章：翻译标题，总结并翻译内容
+
+        Args:
+            article: 文章字典
+            target_lang: 目标语言
+
+        Returns:
+            更新后的文章字典
+        """
+        # 翻译标题
+        title = article.get('title', '')
+        if title and self._needs_translation(title):
+            translated_title = self.translate(title, target_lang)
+            if translated_title:
+                article['translated_title'] = translated_title
+
+        # 总结并翻译内容
+        content = article.get('content', '')
+        if content and len(content) > 50:
+            result = self.summarize_and_translate(content, target_lang)
+            if result.get('summary'):
+                article['summary'] = result['summary']
+            if result.get('translated'):
+                article['translated_content'] = result['translated']
+
+        return article
+
     def _needs_translation(self, text: str) -> bool:
         """判断是否需要翻译"""
-        # 简单判断：如果包含较多英文字母，则需要翻译
         import string
         english_chars = sum(1 for c in text if c in string.ascii_letters)
         total_chars = sum(1 for c in text if c.isalnum())
@@ -63,7 +106,7 @@ class Translator(ABC):
 
 
 class DeepSeekTranslator(Translator):
-    """DeepSeek翻译器"""
+    """DeepSeek翻译器 - 支持总结和翻译"""
 
     def __init__(self, api_key: str = None, model: str = None, base_url: str = None):
         super().__init__(api_key, model)
@@ -71,33 +114,16 @@ class DeepSeekTranslator(Translator):
         self.model = model or Config.DEEPSEEK_MODEL or 'deepseek-chat'
         self.base_url = base_url or Config.DEEPSEEK_BASE_URL or 'https://api.deepseek.com/v1/chat/completions'
 
-    def translate(self, text: str, target_lang: str = None) -> str:
-        """
-        使用DeepSeek API翻译
-
-        Args:
-            text: 待翻译的文本
-            target_lang: 目标语言
-
-        Returns:
-            翻译后的文本
-        """
+    def _call_api(self, system_prompt: str, user_prompt: str, max_tokens: int = 500) -> str:
+        """调用 API"""
         if not self.api_key:
-            print("DeepSeek API key not configured, skipping...")
             return ''
 
         try:
-            target_lang = target_lang or self.default_target_lang
-
-            # 构建请求
             headers = {
                 'Content-Type': 'application/json',
                 'Authorization': f'Bearer {self.api_key}'
             }
-
-            # 翻译提示词
-            system_prompt = f"你是一个专业的翻译助手。请将以下内容翻译成{target_lang}，只返回翻译结果，不要添加任何解释。"
-            user_prompt = text
 
             payload = {
                 'model': self.model,
@@ -106,7 +132,7 @@ class DeepSeekTranslator(Translator):
                     {'role': 'user', 'content': user_prompt}
                 ],
                 'temperature': 0.3,
-                'max_tokens': 500
+                'max_tokens': max_tokens
             }
 
             response = requests.post(
@@ -118,25 +144,65 @@ class DeepSeekTranslator(Translator):
 
             response.raise_for_status()
             result = response.json()
+            return result['choices'][0]['message']['content'].strip()
 
-            # 提取翻译结果
-            translated_text = result['choices'][0]['message']['content'].strip()
-
-            return translated_text
-
-        except requests.exceptions.RequestException as e:
-            print(f"DeepSeek API request error: {e}")
-            return ''
-        except (KeyError, IndexError) as e:
-            print(f"DeepSeek API response parsing error: {e}")
-            return ''
         except Exception as e:
-            print(f"DeepSeek translation error: {e}")
+            print(f"DeepSeek API error: {e}")
             return ''
+
+    def translate(self, text: str, target_lang: str = None) -> str:
+        """翻译文本"""
+        target_lang = target_lang or self.default_target_lang
+        system_prompt = f"你是一个专业的翻译助手。请将以下内容翻译成{target_lang}，只返回翻译结果，不要添加任何解释。"
+        return self._call_api(system_prompt, text)
+
+    def summarize_and_translate(self, text: str, target_lang: str = None) -> Dict[str, str]:
+        """
+        总结并翻译 Twitter 帖子内容
+        
+        Args:
+            text: 帖子内容
+            target_lang: 目标语言
+            
+        Returns:
+            {'summary': 中文总结, 'translated': 中文翻译}
+        """
+        target_lang = target_lang or self.default_target_lang
+        
+        # 一步完成总结和翻译
+        system_prompt = """你是一个专业的内容编辑。请对以下社交媒体帖子进行处理：
+1. 如果内容是英文，请先用1-2句话总结核心内容（中文）
+2. 然后提供完整的中文翻译
+
+请严格按照以下JSON格式返回，不要添加其他内容：
+{"summary": "一句话总结", "translated": "完整翻译内容"}"""
+
+        result = self._call_api(system_prompt, text, max_tokens=800)
+        
+        # 解析 JSON 结果
+        import json
+        try:
+            # 尝试提取 JSON
+            if '{' in result and '}' in result:
+                start = result.index('{')
+                end = result.rindex('}') + 1
+                json_str = result[start:end]
+                data = json.loads(json_str)
+                return {
+                    'summary': data.get('summary', ''),
+                    'translated': data.get('translated', '')
+                }
+        except Exception as e:
+            print(f"JSON parsing error: {e}")
+        
+        # 如果解析失败，尝试直接作为翻译结果
+        if result:
+            return {'summary': '', 'translated': result}
+        return {'summary': '', 'translated': ''}
 
 
 class OpenAITranslator(Translator):
-    """OpenAI翻译器（兼容OpenAI API的其他模型）"""
+    """OpenAI翻译器 - 支持总结和翻译"""
 
     def __init__(self, api_key: str = None, model: str = None, base_url: str = None):
         super().__init__(api_key, model)
@@ -144,39 +210,25 @@ class OpenAITranslator(Translator):
         self.model = model or Config.OPENAI_MODEL or 'gpt-3.5-turbo'
         self.base_url = base_url or Config.OPENAI_BASE_URL or 'https://api.openai.com/v1/chat/completions'
 
-    def translate(self, text: str, target_lang: str = None) -> str:
-        """
-        使用OpenAI API翻译
-
-        Args:
-            text: 待翻译的文本
-            target_lang: 目标语言
-
-        Returns:
-            翻译后的文本
-        """
+    def _call_api(self, system_prompt: str, user_prompt: str, max_tokens: int = 500) -> str:
+        """调用 API"""
         if not self.api_key:
-            print("OpenAI API key not configured, skipping...")
             return ''
 
         try:
-            target_lang = target_lang or self.default_target_lang
-
             headers = {
                 'Content-Type': 'application/json',
                 'Authorization': f'Bearer {self.api_key}'
             }
 
-            system_prompt = f"你是一个专业的翻译助手。请将以下内容翻译成{target_lang}，只返回翻译结果，不要添加任何解释。"
-
             payload = {
                 'model': self.model,
                 'messages': [
                     {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': text}
+                    {'role': 'user', 'content': user_prompt}
                 ],
                 'temperature': 0.3,
-                'max_tokens': 500
+                'max_tokens': max_tokens
             }
 
             response = requests.post(
@@ -188,20 +240,46 @@ class OpenAITranslator(Translator):
 
             response.raise_for_status()
             result = response.json()
+            return result['choices'][0]['message']['content'].strip()
 
-            translated_text = result['choices'][0]['message']['content'].strip()
-
-            return translated_text
-
-        except requests.exceptions.RequestException as e:
-            print(f"OpenAI API request error: {e}")
-            return ''
-        except (KeyError, IndexError) as e:
-            print(f"OpenAI API response parsing error: {e}")
-            return ''
         except Exception as e:
-            print(f"OpenAI translation error: {e}")
+            print(f"OpenAI API error: {e}")
             return ''
+
+    def translate(self, text: str, target_lang: str = None) -> str:
+        """翻译文本"""
+        target_lang = target_lang or self.default_target_lang
+        system_prompt = f"你是一个专业的翻译助手。请将以下内容翻译成{target_lang}，只返回翻译结果，不要添加任何解释。"
+        return self._call_api(system_prompt, text)
+
+    def summarize_and_translate(self, text: str, target_lang: str = None) -> Dict[str, str]:
+        """总结并翻译"""
+        target_lang = target_lang or self.default_target_lang
+        
+        system_prompt = f"""你是一个专业的内容编辑。请对以下社交媒体帖子进行处理：
+1. 用1-2句话总结核心内容（{target_lang}）
+2. 提供完整的{target_lang}翻译
+
+请严格按照以下JSON格式返回：
+{{"summary": "一句话总结", "translated": "完整翻译内容"}}"""
+
+        result = self._call_api(system_prompt, text, max_tokens=800)
+        
+        import json
+        try:
+            if '{' in result and '}' in result:
+                start = result.index('{')
+                end = result.rindex('}') + 1
+                json_str = result[start:end]
+                data = json.loads(json_str)
+                return {
+                    'summary': data.get('summary', ''),
+                    'translated': data.get('translated', '')
+                }
+        except Exception as e:
+            print(f"JSON parsing error: {e}")
+        
+        return {'summary': '', 'translated': result if result else ''}
 
 
 class GoogleTranslator(Translator):
@@ -211,18 +289,8 @@ class GoogleTranslator(Translator):
         super().__init__(api_key, model)
 
     def translate(self, text: str, target_lang: str = None) -> str:
-        """
-        使用Google Translate API翻译
-
-        Args:
-            text: 待翻译的文本
-            target_lang: 目标语言
-
-        Returns:
-            翻译后的文本
-        """
+        """使用Google Translate API翻译"""
         try:
-            # 使用deep-translator库（免费）
             from deep_translator import GoogleTranslator as GT
 
             translator = GT(source='auto', target=target_lang or self.default_target_lang)
@@ -246,16 +314,7 @@ class DeepLTranslator(Translator):
         self.api_key = api_key or Config.DEEPL_API_KEY
 
     def translate(self, text: str, target_lang: str = None) -> str:
-        """
-        使用DeepL API翻译
-
-        Args:
-            text: 待翻译的文本
-            target_lang: 目标语言
-
-        Returns:
-            翻译后的文本
-        """
+        """使用DeepL API翻译"""
         if not self.api_key:
             print("DeepL API key not configured, skipping...")
             return ''
@@ -357,8 +416,6 @@ def translate_articles(articles: list[Dict], translator: Translator = None) -> l
         return articles
 
     for article in articles:
-        translated_title = translator.translate_article_title(article)
-        if translated_title:
-            article['translated_title'] = translated_title
+        translator.process_article(article)
 
     return articles

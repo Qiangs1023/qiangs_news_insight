@@ -80,20 +80,41 @@ class NewsAggregator:
 
             logger.info(f"Unique articles after deduplication: {len(unique_articles)}")
 
-            # 5. 翻译（只翻译标记为需要翻译的文章）
-            articles_to_translate = [a for a in unique_articles if a.get('translate', False)]
-            if articles_to_translate:
-                translated_articles = translate_articles(articles_to_translate, self.translator)
-                # 更新原文章列表中的翻译结果
-                for i, article in enumerate(unique_articles):
-                    if article.get('translate', False):
-                        for translated in translated_articles:
-                            if article.get('url') == translated.get('url'):
-                                article['translated_title'] = translated.get('translated_title')
-                                break
-                logger.info(f"Translated {len(articles_to_translate)} articles")
-            else:
-                logger.info("No articles marked for translation")
+            # 5. 翻译处理
+            # Twitter订阅源：总结+翻译内容
+            # 其他订阅源：只翻译英文标题
+            twitter_articles = [a for a in unique_articles if a.get('source_type') == 'twitter']
+            other_articles = [a for a in unique_articles if a.get('source_type') != 'twitter']
+
+            # 处理Twitter文章：总结+翻译
+            if twitter_articles and self.translator:
+                logger.info(f"Processing {len(twitter_articles)} Twitter articles (summarize + translate)...")
+                for article in twitter_articles:
+                    content = article.get('content', '')
+                    if content and len(content) > 30:
+                        result = self.translator.summarize_and_translate(content)
+                        if result.get('summary'):
+                            article['summary'] = result['summary']
+                        if result.get('translated'):
+                            article['translated_content'] = result['translated']
+                    # 标题翻译
+                    title = article.get('title', '')
+                    if title and self._needs_translation(title):
+                        translated_title = self.translator.translate(title)
+                        if translated_title:
+                            article['translated_title'] = translated_title
+
+            # 处理其他订阅源：只翻译英文标题
+            if other_articles and self.translator:
+                logger.info(f"Processing {len(other_articles)} non-Twitter articles (translate titles only)...")
+                for article in other_articles:
+                    title = article.get('title', '')
+                    if title and self._needs_translation(title):
+                        translated_title = self.translator.translate(title)
+                        if translated_title:
+                            article['translated_title'] = translated_title
+
+            logger.info(f"Translation completed")
 
             # 6. 保存到数据库
             saved_count = 0
@@ -105,16 +126,17 @@ class NewsAggregator:
                         title=article_dict.get('title', ''),
                         url=article_dict.get('url', ''),
                         content=article_dict.get('content', ''),
-                        published_at=article_dict.get('published_at')
+                        published_at=article_dict.get('published_at'),
+                        summary=article_dict.get('summary'),
+                        translated_content=article_dict.get('translated_content'),
+                        translated_title=article_dict.get('translated_title'),
+                        image_url=article_dict.get('image_url'),
+                        video_thumbnail=article_dict.get('video_thumbnail'),
+                        media_type=article_dict.get('media_type'),
+                        author=article_dict.get('author'),
+                        author_name=article_dict.get('author_name'),
+                        author_avatar=article_dict.get('author_avatar')
                     )
-
-                    # 保存翻译
-                    if article_id and article_dict.get('translated_title'):
-                        self.db.update_article_translation(
-                            article_id,
-                            article_dict['translated_title']
-                        )
-
                     saved_count += 1
 
             logger.info(f"Saved {saved_count} new articles to database")
@@ -257,6 +279,17 @@ class NewsAggregator:
         except Exception as e:
             logger.error(f"Error scraping {name}: {e}")
             return []
+
+    def _needs_translation(self, text: str) -> bool:
+        """判断文本是否需要翻译（检测是否为英文）"""
+        import string
+        if not text:
+            return False
+        english_chars = sum(1 for c in text if c in string.ascii_letters)
+        total_chars = sum(1 for c in text if c.isalnum())
+        if total_chars == 0:
+            return False
+        return english_chars / total_chars > 0.3
 
 
 def main():
