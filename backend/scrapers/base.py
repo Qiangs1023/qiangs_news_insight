@@ -115,12 +115,12 @@ class BaseScraper(ABC):
 
     def scrape(self) -> List[Dict]:
         """
-        抓取并返回文章字典列表（只保留最近48小时的内容）
+        抓取并返回文章字典列表（只保留最近36小时的内容）
 
         Returns:
             文章字典列表
         """
         articles = self.fetch_with_retry()
-        # 过滤只保留最近48小时的文章
-        recent_articles = self.filter_recent(articles, hours=48)
+        # 过滤只保留最近36小时的文章
+        recent_articles = self.filter_recent(articles, hours=36)
         return [article.to_dict() for article in recent_articles]
