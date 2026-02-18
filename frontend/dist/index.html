@@ -55,11 +55,37 @@
             border-bottom: 1px solid var(--border);
         }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .logo {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--text);
             text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--border);
         }
 
         .header-right {
@@ -288,11 +314,31 @@
         /* Footer */
         footer {
             margin-top: 48px;
-            padding-top: 16px;
+            padding-top: 24px;
             border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-qrcode {
+            margin-bottom: 16px;
+        }
+
+        .footer-qrcode img {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            opacity: 0.9;
+        }
+
+        .footer-qrcode p {
             font-size: 0.75rem;
             color: var(--text-secondary);
-            text-align: center;
+            margin-top: 8px;
+        }
+
+        .footer-time {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
 
         /* Empty State */
@@ -313,7 +359,14 @@
 <body>
     <div class="container">
         <header>
-            <a href="/" class="logo">数字旷野 每日新闻</a>
+            <div class="header-left">
+                <a href="/" class="logo">数字旷野 每日新闻</a>
+                <nav class="nav-links">
+                    <a href="https://my.feishu.cn/docx/AExMdpyceoAaKJxy34PcvGkOnMb?from=from_copylink" target="_blank" rel="noopener" class="nav-link">我的博客</a>
+                    <a href="https://my.feishu.cn/base/JOhwbUOy6anydGsjQnccrzI1n9d?from=from_copylink" target="_blank" rel="noopener" class="nav-link">作品集</a>
+                    <a href="https://my.feishu.cn/docx/IPK9dGbYqoh8ZcxneFhcoKfjnre?from=from_copylink" target="_blank" rel="noopener" class="nav-link">关于我</a>
+                </nav>
+            </div>
             <div class="header-right">
                 <span class="stats" id="stats"></span>
                 <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
@@ -329,7 +382,13 @@
         </main>
 
         <footer>
-            <span id="updateTime"></span>
+            <div class="footer-qrcode">
+                <img src="images/wxqrcode.jpg" alt="微信二维码">
+                <p>扫码加我微信</p>
+            </div>
+            <div class="footer-time">
+                <span id="updateTime"></span>
+            </div>
         </footer>
     </div>
 
